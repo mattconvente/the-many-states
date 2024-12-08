@@ -1,39 +1,29 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { states } from "./data";
-
-interface State {
-  id: string;
-  abbr: string;
-  name: string;
-  pathCoordinates: string;
-}
+import { State } from "./types";
+import { TheManyStatesContext } from './contexts';
 
 export function USMap() {
-  const [selectedStates, setSelectedState] = useState<State[]>([]);
+  const { selectedStates, setSelectedStates } = useContext(TheManyStatesContext);
 
   const toggleSelectedStates = (state: State) => {
     const checkStateIsSelected =
-      selectedStates.filter((s: State) => s.abbr === state.abbr).length === 1;
+      selectedStates?.filter((s: State) => s.abbr === state.abbr).length === 1;
 
     if (!checkStateIsSelected) {
-      setSelectedState([
+      setSelectedStates([
         ...selectedStates,
-        {
-          id: state.id,
-          abbr: state.abbr,
-          name: state.name,
-          pathCoordinates: state.pathCoordinates,
-        }
+        state,
       ]);
     } else {
-      const newSelectedStates = selectedStates.filter((s) => s.abbr !== state.abbr);
-      setSelectedState(newSelectedStates);
+      const newSelectedStates = selectedStates?.filter((s: State) => s.abbr !== state.abbr);
+      setSelectedStates(newSelectedStates);
     }
   };
 
-  const selectedStateAbbrs = selectedStates.map((state) => state.abbr);
+  const selectedStateAbbrs = selectedStates?.map((state: State) => state.abbr);
 
   return (
     <svg width="" height="" viewBox="0 0 959 593" fill="none" xmlns="http://www.w3.org/2000/svg">

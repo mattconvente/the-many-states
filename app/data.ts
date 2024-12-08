@@ -300,3 +300,306 @@ export const states = [
     pathCoordinates: "M355.3 143.7L304.3 138.4L247 130.5L245 141.2L236.5 196L233.2 217.9L265.3 222.7L310.2 228.4L347.7 231.8L351.4 187.6L355.3 143.7Z"
   }
 ];
+
+export const stars = [
+  {
+    id: "AL",
+    abbr: "AL",
+    name: "Alabama",
+    pathCoordinates: "M411.667 119.98L423.434 156.197L392.626 133.813H430.707L399.899 156.197L411.667 119.98Z"
+  },
+  {
+    id: "AK",
+    abbr: "AK",
+    name: "Alaska",
+    pathCoordinates: "M370.5 294.98L382.268 331.197L351.46 308.813H389.54L358.732 331.197L370.5 294.98Z"
+  },
+  {
+    id: "AZ",
+    abbr: "AZ",
+    name: "Arizona",
+    pathCoordinates: "M288.167 294.98L299.934 331.197L269.126 308.813H307.207L276.399 331.197L288.167 294.98Z"
+  },
+  {
+    id: "AR",
+    abbr: "AR",
+    name: "Arkansas",
+    pathCoordinates: "M205.833 154.98L217.601 191.197L186.793 168.813H224.874L194.066 191.197L205.833 154.98Z"
+  },
+  {
+    id: "CA",
+    abbr: "CA",
+    name: "California",
+    pathCoordinates: "M247 189.98L258.768 226.197L227.96 203.813H266.04L235.232 226.197L247 189.98Z"
+  },
+  {
+    id: "CO",
+    abbr: "CO",
+    name: "Colorado",
+    pathCoordinates: "M370.5 224.98L382.268 261.197L351.46 238.813H389.54L358.732 261.197L370.5 224.98Z"
+  },
+  {
+    id: "CT",
+    abbr: "CT",
+    name: "Connecticut",
+    pathCoordinates: "M370.5 14.98L382.268 51.196L351.46 28.813H389.54L358.732 51.196L370.5 14.98Z"
+  },
+  {
+    id: "DE",
+    abbr: "DE",
+    name: "Delaware",
+    pathCoordinates: "M41.167 14.98L52.934 51.196L22.126 28.813H60.207L29.399 51.196L41.167 14.98Z"
+  },
+  {
+    id: "FL",
+    abbr: "FL",
+    name: "Florida",
+    pathCoordinates: "M370.5 154.98L382.268 191.197L351.46 168.813H389.54L358.732 191.197L370.5 154.98Z"
+  },
+  {
+    id: "GA",
+    abbr: "GA",
+    name: "Georgia",
+    pathCoordinates: "M288.167 14.98L299.934 51.196L269.126 28.813H307.207L276.399 51.196L288.167 14.98Z"
+  },
+  {
+    id: "HI",
+    abbr: "HI",
+    name: "Hawaii",
+    pathCoordinates: "M452.833 294.98L464.601 331.197L433.793 308.813H471.874L441.066 331.197L452.833 294.98Z"
+  },
+  {
+    id: "ID",
+    abbr: "ID",
+    name: "Idaho",
+    pathCoordinates: "M329.333 259.98L341.101 296.197L310.293 273.813H348.374L317.566 296.197L329.333 259.98Z"
+  },
+  {
+    id: "IL",
+    abbr: "IL",
+    name: "Illinois",
+    pathCoordinates: "M329.333 119.98L341.101 156.197L310.293 133.813H348.374L317.566 156.197L329.333 119.98Z"
+  },
+  {
+    id: "IN",
+    abbr: "IN",
+    name: "Indiana",
+    pathCoordinates: "M164.667 119.98L176.434 156.197L145.626 133.813H183.707L152.899 156.197L164.667 119.98Z"
+  },
+  {
+    id: "IA",
+    abbr: "IA",
+    name: "Iowa",
+    pathCoordinates: "M82.333 189.98L94.101 226.197L63.293 203.813H101.374L70.566 226.197L82.333 189.98Z"
+  },
+  {
+    id: "KS",
+    abbr: "KS",
+    name: "Kansas",
+    pathCoordinates: "M41.167 224.98L52.934 261.197L22.126 238.813H60.207L29.399 261.197L41.167 224.98Z"
+  },
+  {
+    id: "KY",
+    abbr: "KY",
+    name: "Kentucky",
+    pathCoordinates: "M288.167 84.98L299.934 121.197L269.126 98.813H307.207L276.399 121.197L288.167 84.98Z"
+  },
+  {
+    id: "LA",
+    abbr: "LA",
+    name: "Louisiana",
+    pathCoordinates: "M82.333 119.98L94.101 156.197L63.293 133.813H101.374L70.566 156.197L82.333 119.98Z"
+  },
+  {
+    id: "ME",
+    abbr: "ME",
+    name: "Maine",
+    pathCoordinates: "M41.167 154.98L52.934 191.197L22.126 168.813H60.207L29.399 191.197L41.167 154.98Z"
+  },
+  {
+    id: "MD",
+    abbr: "MD",
+    name: "Maryland",
+    pathCoordinates: "M82.333 49.98L94.101 86.196L63.293 63.813H101.374L70.566 86.196L82.333 49.98Z"
+  },
+  {
+    id: "MA",
+    abbr: "MA",
+    name: "Massachusetts",
+    pathCoordinates: "M452.833 14.98L464.601 51.196L433.793 28.813H471.874L441.066 51.196L452.833 14.98Z"
+  },
+  {
+    id: "MI",
+    abbr: "MI",
+    name: "Michigan",
+    pathCoordinates: "M288.167 154.98L299.934 191.197L269.126 168.813H307.207L276.399 191.197L288.167 154.98Z"
+  },
+  {
+    id: "MN",
+    abbr: "MN",
+    name: "Minnesota",
+    pathCoordinates: "M329.333 189.98L341.101 226.197L310.293 203.813H348.374L317.566 226.197L329.333 189.98Z"
+  },
+  {
+    id: "MS",
+    abbr: "MS",
+    name: "Mississippi",
+    pathCoordinates: "M247 119.98L258.768 156.197L227.96 133.813H266.04L235.232 156.197L247 119.98Z"
+  },
+  {
+    id: "MO",
+    abbr: "MO",
+    name: "Missouri",
+    pathCoordinates: "M123.5 154.98L135.268 191.197L104.46 168.813H142.54L111.732 191.197L123.5 154.98Z"
+  },
+  {
+    id: "MT",
+    abbr: "MT",
+    name: "Montana",
+    pathCoordinates: "M164.667 259.98L176.434 296.197L145.626 273.813H183.707L152.899 296.197L164.667 259.98Z"
+  },
+  {
+    id: "NE",
+    abbr: "NE",
+    name: "Nebraska",
+    pathCoordinates: "M288.167 224.98L299.934 261.197L269.126 238.813H307.207L276.399 261.197L288.167 224.98Z"
+  },
+  {
+    id: "NV",
+    abbr: "NV",
+    name: "Nevada",
+    pathCoordinates: "M205.833 224.98L217.601 261.197L186.793 238.813H224.874L194.066 261.197L205.833 224.98Z"
+  },
+  {
+    id: "NH",
+    abbr: "NH",
+    name: "New Hampshire",
+    pathCoordinates: "M247 49.98L258.768 86.196L227.96 63.813H266.04L235.232 86.196L247 49.98Z"
+  },
+  {
+    id: "NJ",
+    abbr: "NJ",
+    name: "New Jersey",
+    pathCoordinates: "M205.833 14.98L217.601 51.196L186.793 28.813H224.874L194.066 51.196L205.833 14.98Z"
+  },
+  {
+    id: "NM",
+    abbr: "NM",
+    name: "New Mexico",
+    pathCoordinates: "M205.833 294.98L217.601 331.197L186.793 308.813H224.874L194.066 331.197L205.833 294.98Z"
+  },
+  {
+    id: "NY",
+    abbr: "NY",
+    name: "New York",
+    pathCoordinates: "M411.667 49.98L423.434 86.196L392.626 63.813H430.707L399.899 86.196L411.667 49.98Z"
+  },
+  {
+    id: "NC",
+    abbr: "NC",
+    name: "North Carolina",
+    pathCoordinates: "M41.167 84.98L52.934 121.197L22.126 98.813H60.207L29.399 121.197L41.167 84.98Z"
+  },
+  {
+    id: "ND",
+    abbr: "ND",
+    name: "North Dakota",
+    pathCoordinates: "M452.833 224.98L464.601 261.197L433.793 238.813H471.874L441.066 261.197L452.833 224.98Z"
+  },
+  {
+    id: "OH",
+    abbr: "OH",
+    name: "Ohio",
+    pathCoordinates: "M452.833 84.98L464.601 121.197L433.793 98.813H471.874L441.066 121.197L452.833 84.98Z"
+  },
+  {
+    id: "OK",
+    abbr: "OK",
+    name: "Oklahoma",
+    pathCoordinates: "M123.5 294.98L135.268 331.197L104.46 308.813H142.54L111.732 331.197L123.5 294.98Z"
+  },
+  {
+    id: "OR",
+    abbr: "OR",
+    name: "Oregon",
+    pathCoordinates: "M411.667 189.98L423.434 226.197L392.626 203.813H430.707L399.899 226.197L411.667 189.98Z"
+  },
+  {
+    id: "PA",
+    abbr: "PA",
+    name: "Pennsylvania",
+    pathCoordinates: "M123.5 14.98L135.268 51.196L104.46 28.813H142.54L111.732 51.196L123.5 14.98Z"
+  },
+  {
+    id: "RI",
+    abbr: "RI",
+    name: "Rhode Island",
+    pathCoordinates: "M123.5 84.98L135.268 121.197L104.46 98.813H142.54L111.732 121.197L123.5 84.98Z"
+  },
+  {
+    id: "SC",
+    abbr: "SC",
+    name: "South Carolina",
+    pathCoordinates: "M164.667 49.98L176.434 86.196L145.626 63.813H183.707L152.899 86.196L164.667 49.98Z"
+  },
+  {
+    id: "SD",
+    abbr: "SD",
+    name: "South Dakota",
+    pathCoordinates: "M82.333 259.98L94.101 296.197L63.293 273.813H101.374L70.566 296.197L82.333 259.98Z"
+  },
+  {
+    id: "TN",
+    abbr: "TN",
+    name: "Tennessee",
+    pathCoordinates: "M370.5 84.98L382.268 121.197L351.46 98.813H389.54L358.732 121.197L370.5 84.98Z"
+  },
+  {
+    id: "TX",
+    abbr: "TX",
+    name: "Texas",
+    pathCoordinates: "M452.833 154.98L464.601 191.197L433.793 168.813H471.874L441.066 191.197L452.833 154.98Z"
+  },
+  {
+    id: "UT",
+    abbr: "UT",
+    name: "Utah",
+    pathCoordinates: "M41.167 294.98L52.934 331.197L22.126 308.813H60.207L29.399 331.197L41.167 294.98Z"
+  },
+  {
+    id: "VT",
+    abbr: "VT",
+    name: "Vermont",
+    pathCoordinates: "M205.833 84.98L217.601 121.197L186.793 98.813H224.874L194.066 121.197L205.833 84.98Z"
+  },
+  {
+    id: "VA",
+    abbr: "VA",
+    name: "Virginia",
+    pathCoordinates: "M329.333 49.98L341.101 86.196L310.293 63.813H348.374L317.566 86.196L329.333 49.98Z"
+  },
+  {
+    id: "WA",
+    abbr: "WA",
+    name: "Washington",
+    pathCoordinates: "M247 259.98L258.768 296.197L227.96 273.813H266.04L235.232 296.197L247 259.98Z"
+  },
+  {
+    id: "WV",
+    abbr: "WV",
+    name: "West Virginia",
+    pathCoordinates: "M123.5 224.98L135.268 261.197L104.46 238.813H142.54L111.732 261.197L123.5 224.98Z"
+  },
+  {
+    id: "WI",
+    abbr: "WI",
+    name: "Wisconsin",
+    pathCoordinates: "M164.667 189.98L176.434 226.197L145.626 203.813H183.707L152.899 226.197L164.667 189.98Z"
+  },
+  {
+    id: "WY",
+    abbr: "WY",
+    name: "Wyoming",
+    pathCoordinates: "M411.667 259.98L423.434 296.197L392.626 273.813H430.707L399.899 296.197L411.667 259.98Z"
+  }
+];
