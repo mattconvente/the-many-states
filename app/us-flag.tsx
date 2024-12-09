@@ -1,11 +1,11 @@
 "use client"
 
 import React from "react";
-import { State, Star } from "./types";
+import { IState, IStar } from "./types";
 import { stars } from "./data";
 
 export function USFlag({ selectedStates = [] }) {
-  const selectedStateAbbrs = selectedStates.map((state: State) => state.abbr);
+  const selectedStateAbbrs = selectedStates.map((state: IState) => state.abbr);
 
   return (
     <div className="flag-container">
@@ -28,7 +28,7 @@ export function USFlag({ selectedStates = [] }) {
           <g id="union">
             <path id="union-bg" d="M494 0H0V350H494V0Z" fill="var(--color-old-glory-blue)" />
             <g id="stars">
-              {stars.map((star: Star) => (
+              {stars.map((star: IStar) => (
                 <path
                   className={`transition-colors ${selectedStateAbbrs.includes(star.abbr) ? "fill-[--star-fill-active]" : "fill-[--star-fill-resting]"}`}
                   key={star.abbr}

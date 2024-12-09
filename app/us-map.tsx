@@ -2,28 +2,39 @@
 
 import React, { useContext } from "react";
 import { states } from "./data";
-import { State } from "./types";
-import { TheManyStatesContext } from './contexts';
+import { IState } from "./types";
+import { TheManyStatesContext } from "./contexts";
 
 export function USMap() {
-  const { selectedStates, setSelectedStates } = useContext(TheManyStatesContext);
+  const context = useContext(TheManyStatesContext);
 
-  const toggleSelectedStates = (state: State) => {
+  if (!context) {
+    throw new Error("TheManyStatesContext must be used within a TheManyStatesContext.Provider");
+  }
+
+  const { selectedStates, setSelectedStates } = context;
+
+  const toggleSelectedStates = (state: IState) => {
     const checkStateIsSelected =
-      selectedStates?.filter((s: State) => s.abbr === state.abbr).length === 1;
+      selectedStates.filter((s: IState) => s.abbr === state.abbr).length === 1;
 
     if (!checkStateIsSelected) {
       setSelectedStates([
         ...selectedStates,
-        state,
+        {
+          id: state.id,
+          abbr: state.abbr,
+          name: state.name,
+          pathCoordinates: state.pathCoordinates,
+        }
       ]);
     } else {
-      const newSelectedStates = selectedStates?.filter((s: State) => s.abbr !== state.abbr);
+      const newSelectedStates = selectedStates.filter((s) => s.abbr !== state.abbr);
       setSelectedStates(newSelectedStates);
     }
   };
 
-  const selectedStateAbbrs = selectedStates?.map((state: State) => state.abbr);
+  const selectedStateAbbrs = selectedStates.map((state) => state.abbr);
 
   return (
     <svg width="" height="" viewBox="0 0 959 593" fill="none" xmlns="http://www.w3.org/2000/svg">
