@@ -3,16 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --white: #FFF;
+  --color-white: #FFF;
   --background: #ECE7C1;
   --foreground: #171717;
   --header-background: #D4C9A3;
-  --old-glory-red: #B31942;
-  --old-glory-blue: #0A3161;
+  --color-old-glory-red: #B31942;
+  --color-old-glory-blue: #0A3161;
   --state-border-resting: #A89E7A;
   --state-fill-resting: #D4C9A3;
   --state-fill-hover: #BB9F99;
   --state-fill-active: #896961;
+  --star-fill-resting: var(--color-old-glory-blue);
+  --star-fill-active: var(--color-white);
 }
 
 body {
