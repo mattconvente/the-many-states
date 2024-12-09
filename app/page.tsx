@@ -5,10 +5,11 @@ import Image from "next/image";
 import Footer from "./footer";
 import { USMap } from "./us-map";
 // import { USFlag } from "./us-flag";
+import { IState } from "./types";
 import { TheManyStatesContext } from './contexts';
 
 export default function Home() {
-  const [selectedStates, setSelectedStates] = useState([]);
+  const [selectedStates, setSelectedStates] = useState<IState[]>([]);
 
   return (
     <TheManyStatesContext.Provider value={{
