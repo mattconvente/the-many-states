@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Footer from "./footer";
 import { USMap } from "./us-map";
 // import { USFlag } from "./us-flag";
 import { TheManyStatesContext } from './contexts';
@@ -30,6 +31,7 @@ export default function Home() {
             <USMap />
             {/* <USFlag selectedStates={selectedStates} /> */}
           </div>
+          <Footer />
         </main>
       </div>
     </TheManyStatesContext.Provider>
