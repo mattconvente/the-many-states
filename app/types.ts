@@ -14,7 +14,7 @@ export interface IStar {
   pathCoordinates: string;
 }
 
-export interface AppContext {
+export interface ITheManyStatesContext {
   selectedStates: IState[];
   setSelectedStates: Dispatch<SetStateAction<IState[]>>;
 }

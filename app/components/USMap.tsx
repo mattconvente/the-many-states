@@ -1,18 +1,12 @@
 "use client"
 
-import React, { useContext } from "react";
-import { states } from "./data";
-import { IState } from "./types";
-import { TheManyStatesContext } from "./contexts";
+import React from "react";
+import { states } from "@/app/data";
+import { IState } from "@/app/types";
+import { useTheManyStatesContext } from '@/app/context/TheManyStatesContext';
 
-export function USMap() {
-  const context = useContext(TheManyStatesContext);
-
-  if (!context) {
-    throw new Error("TheManyStatesContext must be used within a TheManyStatesContext.Provider");
-  }
-
-  const { selectedStates, setSelectedStates } = context;
+export default function USMap() {
+  const { selectedStates, setSelectedStates } = useTheManyStatesContext();
 
   const toggleSelectedStates = (state: IState) => {
     const checkStateIsSelected =

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
+import { TheManyStatesProvider } from "@/app/context/TheManyStatesContext";
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -23,9 +26,15 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       </head>
       <body
-        className={`${nunitoSans.className} antialiased`}
+        className={`${nunitoSans.className} antialiased p-12 m-0`}
       >
-        {children}
+        <TheManyStatesProvider>
+          <Header />
+          <main className="pt-10 pb-12 m-0 font-[family-name:var(--font-nunito-sans)]">
+            {children}
+          </main>
+          <Footer />
+        </TheManyStatesProvider>
       </body>
     </html>
   );
