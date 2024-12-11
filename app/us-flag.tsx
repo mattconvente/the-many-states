@@ -4,7 +4,11 @@ import React from "react";
 import { IState, IStar } from "./types";
 import { stars } from "./data";
 
-export function USFlag({ selectedStates = [] }) {
+interface USFlagProps {
+  selectedStates: IState[];
+}
+
+export function USFlag({ selectedStates = [] }: USFlagProps) {
   const selectedStateAbbrs = selectedStates.map((state: IState) => state.abbr);
 
   return (
