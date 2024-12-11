@@ -1,18 +1,18 @@
 "use client"
 
 import React from "react";
-import { IState, IStar } from "./types";
-import { stars } from "./data";
+import { IState, IStar } from "../types";
+import { stars } from "../data";
 
 interface USFlagProps {
   selectedStates: IState[];
 }
 
-export function USFlag({ selectedStates = [] }: USFlagProps) {
+export default function USFlag({ selectedStates = [] }: USFlagProps) {
   const selectedStateAbbrs = selectedStates.map((state: IState) => state.abbr);
 
   return (
-    <div className="flag-container">
+    <div className="flag-container w-full">
       <svg
         width=""
         height=""
