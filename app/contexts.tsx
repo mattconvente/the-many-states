@@ -1,6 +1,6 @@
 "use client"
 
 import { createContext } from "react";
-import { AppContext } from "./types";
+import { ITheManyStatesContext } from "@/app/types";
 
-export const TheManyStatesContext = createContext<AppContext | null>(null);
+export const TheManyStatesContext = createContext<ITheManyStatesContext | null>(null);
