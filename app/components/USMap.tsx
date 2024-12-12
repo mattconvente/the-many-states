@@ -6,44 +6,60 @@ import { IState } from "@/app/types";
 import { useTheManyStatesContext } from '@/app/context/TheManyStatesContext';
 
 export default function USMap() {
-  const { selectedStates, setSelectedStates } = useTheManyStatesContext();
+  const {
+    visitedStates,
+    unvisitedStates,
+    setVisitedStates,
+    setUnvisitedStates,
+  } = useTheManyStatesContext();
 
-  const toggleSelectedStates = (state: IState) => {
+  const toggleVisitedStates = (state: IState) => {
     const checkStateIsSelected =
-      selectedStates.filter((s: IState) => s.abbr === state.abbr).length === 1;
+      visitedStates.filter((s: IState) => s.abbr === state.abbr).length === 1;
 
     if (!checkStateIsSelected) {
-      setSelectedStates([
-        ...selectedStates,
+      const newVisitedStates = [
+        ...visitedStates,
         {
           id: state.id,
           abbr: state.abbr,
           name: state.name,
           pathCoordinates: state.pathCoordinates,
         }
-      ]);
+      ];
+      setVisitedStates(newVisitedStates);
+
+      const newUnvisitedStates = states.filter((s: IState) =>
+        !newVisitedStates.some((visited) => visited.abbr === s.abbr));
+      setUnvisitedStates(newUnvisitedStates);
     } else {
-      const newSelectedStates = selectedStates.filter((s) => s.abbr !== state.abbr);
-      setSelectedStates(newSelectedStates);
+      const newVisitedStates = visitedStates.filter((s: IState) => s.abbr !== state.abbr);
+      setVisitedStates(newVisitedStates);
+
+      const newUnvisitedStates = [
+        ...unvisitedStates,
+        state
+      ];
+      setUnvisitedStates(newUnvisitedStates);
     }
   };
 
-  const selectedStateAbbrs = selectedStates.map((state) => state.abbr);
+  const selectedStateAbbrs = visitedStates.map((state) => state.abbr);
 
   return (
-    <svg width="" height="" viewBox="0 0 959 593" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className="-mt-2 lg:-mt-6" width="" height="" viewBox="0 0 959 593" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g id="us-map">
         {states.map((state) => {
-          const stateStyles = "transition-colors cursor-pointer stroke-[--state-border-resting]";
+          const stateStyles = "transition-colors cursor-pointer stroke-[--color-state-border-resting]";
 
           return (
             <path
-              className={`${stateStyles} ${selectedStateAbbrs.includes(state.abbr) ? "fill-[--state-fill-active]" : "fill-[--state-fill-resting] hover:fill-[--state-fill-hover]"}`}
+              className={`${stateStyles} ${selectedStateAbbrs.includes(state.abbr) ? "fill-[--color-state-fill-active]" : "fill-[--color-state-fill-resting] hover:fill-[--color-state-fill-hover]"}`}
               key={state.abbr}
               id={state.id}
               name={state.name}
               d={state.pathCoordinates}
-              onClick={() => toggleSelectedStates(state)}
+              onClick={() => toggleVisitedStates(state)}
             />
           )
         })}

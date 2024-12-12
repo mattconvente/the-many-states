@@ -14,10 +14,18 @@ export function useTheManyStatesContext() {
 }
 
 export function TheManyStatesProvider({ children }: { children: React.ReactNode }) {
-  const [selectedStates, setSelectedStates] = useState<IState[]>([]);
+  const [visitedStates, setVisitedStates] = useState<IState[]>([]);
+  const [unvisitedStates, setUnvisitedStates] = useState<IState[]>([]);
 
   return (
-    <TheManyStatesContext.Provider value={{ selectedStates, setSelectedStates }}>
+    <TheManyStatesContext.Provider
+      value={{
+        visitedStates,
+        unvisitedStates,
+        setVisitedStates,
+        setUnvisitedStates,
+      }}
+    >
       {children}
     </TheManyStatesContext.Provider>
   );
