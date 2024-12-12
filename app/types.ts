@@ -15,6 +15,8 @@ export interface IStar {
 }
 
 export interface ITheManyStatesContext {
-  selectedStates: IState[];
-  setSelectedStates: Dispatch<SetStateAction<IState[]>>;
+  visitedStates: IState[];
+  unvisitedStates: IState[];
+  setVisitedStates: Dispatch<SetStateAction<IState[]>>;
+  setUnvisitedStates: Dispatch<SetStateAction<IState[]>>;
 }

@@ -5,11 +5,11 @@ import { IState, IStar } from "../types";
 import { stars } from "../data";
 
 interface USFlagProps {
-  selectedStates: IState[];
+  visitedStates: IState[];
 }
 
-export default function USFlag({ selectedStates = [] }: USFlagProps) {
-  const selectedStateAbbrs = selectedStates.map((state: IState) => state.abbr);
+export default function USFlag({ visitedStates = [] }: USFlagProps) {
+  const selectedStateAbbrs = visitedStates.map((state: IState) => state.abbr);
 
   return (
     <div className="flag-container w-full">
@@ -34,7 +34,7 @@ export default function USFlag({ selectedStates = [] }: USFlagProps) {
             <g id="stars">
               {stars.map((star: IStar) => (
                 <path
-                  className={`transition-colors ${selectedStateAbbrs.includes(star.abbr) ? "fill-[--star-fill-active]" : "fill-[--star-fill-resting]"}`}
+                  className={`transition-colors ${selectedStateAbbrs.includes(star.abbr) ? "fill-[--color-star-fill-active]" : "fill-[--color-star-fill-resting]"}`}
                   key={star.abbr}
                   id={star.id}
                   d={star.pathCoordinates}
