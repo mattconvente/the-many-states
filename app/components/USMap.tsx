@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react";
+import clsx from "clsx";
 import { states } from "@/app/data";
 import { IState } from "@/app/types";
 import { useTheManyStatesContext } from '@/app/context/TheManyStatesContext';
@@ -49,12 +50,12 @@ export default function USMap() {
   return (
     <svg className="-mt-2 lg:-mt-6" width="" height="" viewBox="0 0 959 593" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g id="us-map">
-        {states.map((state) => {
-          const stateStyles = "transition-colors cursor-pointer stroke-[--color-state-border-resting]";
-
-          return (
+        {states.map((state) => (
             <path
-              className={`${stateStyles} ${selectedStateAbbrs.includes(state.abbr) ? "fill-[--color-state-fill-active]" : "fill-[--color-state-fill-resting] hover:fill-[--color-state-fill-hover]"}`}
+              className={clsx("transition-colors cursor-pointer stroke-[--color-state-border-resting]", {
+                "fill-[--color-state-fill-active]": selectedStateAbbrs.includes(state.abbr),
+                "fill-[--color-state-fill-resting] hover:fill-[--color-state-fill-hover]": !selectedStateAbbrs.includes(state.abbr),
+              })}
               key={state.abbr}
               id={state.id}
               name={state.name}
@@ -62,7 +63,7 @@ export default function USMap() {
               onClick={() => toggleVisitedStates(state)}
             />
           )
-        })}
+        )}
       </g>
     </svg>
   );

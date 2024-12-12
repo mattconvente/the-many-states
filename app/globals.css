@@ -10,10 +10,8 @@
   --color-old-glory-blue: #0A3161;
   --color-state-border-resting: #A89E7A;
   --color-state-fill-resting: #D4C9A3;
-  --color-state-fill-hover: #BB9F99;
-  --color-state-fill-active: #896961;
-  --color-star-fill-resting: var(--color-old-glory-blue);
-  --color-star-fill-active: var(--color-white);
+  --color-state-fill-hover: theme(colors.slate.300);
+  --color-state-fill-active: theme(colors.amber.200);
 }
 
 body {

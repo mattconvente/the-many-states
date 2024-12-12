@@ -16,14 +16,20 @@ export function useTheManyStatesContext() {
 export function TheManyStatesProvider({ children }: { children: React.ReactNode }) {
   const [visitedStates, setVisitedStates] = useState<IState[]>([]);
   const [unvisitedStates, setUnvisitedStates] = useState<IState[]>([]);
+  const [hoveredVisitedState, setHoveredVisitedState] = useState<IState | null>(null);
+  const [hoveredUnvisitedState, setHoveredUnvisitedState] = useState<IState | null>(null);
 
   return (
     <TheManyStatesContext.Provider
       value={{
         visitedStates,
         unvisitedStates,
+        hoveredVisitedState,
+        hoveredUnvisitedState,
         setVisitedStates,
         setUnvisitedStates,
+        setHoveredUnvisitedState,
+        setHoveredVisitedState,
       }}
     >
       {children}

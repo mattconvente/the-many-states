@@ -1,14 +1,17 @@
 "use client"
 
 import React from "react";
+import clsx from "clsx";
 import { IState, IStar } from "../types";
 import { stars } from "../data";
+import { useTheManyStatesContext } from "@/app/context/TheManyStatesContext";
 
 interface USFlagProps {
   visitedStates: IState[];
 }
 
 export default function USFlag({ visitedStates = [] }: USFlagProps) {
+  const { hoveredVisitedState, hoveredUnvisitedState } = useTheManyStatesContext();
   const selectedStateAbbrs = visitedStates.map((state: IState) => state.abbr);
 
   return (
@@ -34,8 +37,13 @@ export default function USFlag({ visitedStates = [] }: USFlagProps) {
             <g id="stars">
               {stars.map((star: IStar) => (
                 <path
-                  className={`transition-colors ${selectedStateAbbrs.includes(star.abbr) ? "fill-[--color-star-fill-active]" : "fill-[--color-star-fill-resting]"}`}
                   key={star.abbr}
+                  className={clsx("transition", {
+                    "fill-white": selectedStateAbbrs.includes(star.abbr),
+                    "fill-[--color-old-glory-blue]": !selectedStateAbbrs.includes(star.abbr),
+                    "fill-yellow-400": hoveredVisitedState?.abbr === star.abbr,
+                    "fill-white opacity-50": hoveredUnvisitedState?.abbr === star.abbr,
+                  })}
                   id={star.id}
                   d={star.pathCoordinates}
                 />
