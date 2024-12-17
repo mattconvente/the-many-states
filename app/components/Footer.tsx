@@ -10,7 +10,7 @@ export default function Footer() {
         <li className="after:content-['•'] after:pl-2">
           <a
             href="https://www.mattconvente.com/"
-            className="underline underline-offset-2 hover:no-underline focus:no-underline"
+            className="underline underline-offset-2 outline-none hover:no-underline focus:no-underline focus-visible:outline-black focus-visible:rounded-sm"
           >
             MattConvente.com
           </a>
@@ -18,7 +18,7 @@ export default function Footer() {
         <li className="after:content-['•'] after:pl-2">
           <a
             href="https://www.linkedin.com/in/mattconvente/"
-            className="underline underline-offset-2 hover:no-underline focus:no-underline"
+            className="underline underline-offset-2 outline-none hover:no-underline focus:no-underline focus-visible:outline-black focus-visible:rounded-sm"
           >
             LinkedIn
           </a>
@@ -26,7 +26,7 @@ export default function Footer() {
         <li>
           <a
             href="https://github.com/mattconvente/"
-            className="underline underline-offset-2 hover:no-underline focus:no-underline"
+            className="underline underline-offset-2 outline-none hover:no-underline focus:no-underline focus-visible:outline-black focus-visible:rounded-sm"
           >
             GitHub
           </a>
