@@ -4,7 +4,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="flex flex-col gap-0.5 items-center justify-center">
+    <footer className="flex flex-col gap-0.5 items-center justify-center text-sm md:text-base">
       <div>Copyright &copy; {currentYear} Matt Convente</div>
       <ul className="inline-flex gap-2">
         <li className="after:content-['•'] after:pl-2">
