@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, { KeyboardEvent } from "react";
 import clsx from "clsx";
 import { states } from "@/app/data";
 import { IState } from "@/app/types";
@@ -45,6 +45,12 @@ export default function USMap() {
     }
   };
 
+  const handleOnKeyDown = (event: KeyboardEvent<SVGPathElement>, state: IState) => {
+    if (event.key === "Enter" || event.key === " ") {
+      toggleVisitedStates(state);
+    }
+  }
+
   const selectedStateAbbrs = visitedStates.map((state) => state.abbr);
 
   return (
@@ -52,15 +58,20 @@ export default function USMap() {
       <g id="us-map">
         {states.map((state) => (
             <path
-              className={clsx("transition-colors cursor-pointer stroke-[--color-state-border-resting]", {
-                "fill-[--color-state-fill-active]": selectedStateAbbrs.includes(state.abbr),
-                "fill-[--color-state-fill-resting] hover:fill-[--color-state-fill-hover]": !selectedStateAbbrs.includes(state.abbr),
+              className={clsx("transition-colors cursor-pointer stroke-[--color-state-border-resting] outline-none", {
+                "fill-[--color-state-fill-active] hover:fill-[--color-state-fill-hover-active] focus-visible:fill-[--color-state-fill-hover-active]": selectedStateAbbrs.includes(state.abbr),
+                "fill-[--color-state-fill-resting] hover:fill-[--color-state-fill-hover] focus-visible:fill-[--color-state-fill-hover]": !selectedStateAbbrs.includes(state.abbr),
               })}
               key={state.abbr}
+              role="checkbox"
+              aria-label={state.name}
+              aria-checked={selectedStateAbbrs.includes(state.abbr)}
+              tabIndex={0}
               id={state.id}
               name={state.name}
               d={state.pathCoordinates}
               onClick={() => toggleVisitedStates(state)}
+              onKeyDown={(event) => handleOnKeyDown(event, state)}
             />
           )
         )}

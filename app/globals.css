@@ -12,6 +12,7 @@
   --color-state-fill-resting: #D4C9A3;
   --color-state-fill-hover: theme(colors.slate.300);
   --color-state-fill-active: theme(colors.amber.200);
+  --color-state-fill-hover-active: theme(colors.amber.300);
 }
 
 body {
@@ -25,12 +26,23 @@ body {
     @apply font-bold;
   }
   h1 {
-    @apply text-4xl;
+    @apply text-2xl;
   }
   h2 {
-    @apply text-3xl;
+    @apply text-xl;
   }
   h3 {
-    @apply text-xl;
+    @apply text-base;
+  }
+  @screen lg {
+    h1 {
+      @apply text-4xl;
+    }
+    h2 {
+      @apply text-3xl;
+    }
+    h3 {
+      @apply text-xl;
+    }
   }
 }
