@@ -1,13 +1,19 @@
+"use client"
+
 import React from "react";
 import Image from "next/image";
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
+  const pathname = usePathname();
+  const navClasses = "outline-none hover:no-underline focus:no-underline focus-visible:outline-black focus-visible:rounded-sm";
+
   return (
-    <header className="flex justify-center">
+    <header className="flex flex-col gap-2 md:gap-none md:flex-row items-center justify-between">
       <Link
         href="/"
-        className="focus-visible:rounded-xl focus-visible:outline-none focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[--color-old-glory-blue]"
+        className="focus-visible:rounded-sm focus-visible:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
       >
         <div className="w-[275px] md:w-[360px]">
           <Image
@@ -20,6 +26,20 @@ export default function Header() {
           />
         </div>
       </Link>
+      <nav className="flex gap-4 md:gap-6 text-base md:text-xl">
+        <Link
+          href="/"
+          className={`${navClasses} ${pathname === "/" ? "bg-slate-50" : "underline underline-offset-2"}`}
+        >
+          Home
+        </Link>
+        <Link
+          href="/about"
+          className={`${navClasses} ${pathname === "/about" ? "bg-slate-50" : "underline underline-offset-2"}`}
+        >
+          About
+        </Link>
+      </nav>
     </header>
   );
 };
