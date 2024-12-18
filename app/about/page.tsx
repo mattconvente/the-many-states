@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from 'next/image';
+import USFlagCanton from "@/app/components/USFlagCanton";
 
 export default function AboutPage() {
   const textLinkClasses = "underline underline-offset-2 outline-none hover:no-underline focus:no-underline focus-visible:outline-black focus-visible:rounded-sm";
@@ -11,7 +12,8 @@ export default function AboutPage() {
       <div>
         <h2 className="mb-2 lg:mb-4">About</h2>
         <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">The Many States is a web application where people can generate a personalized United States flag based on the States they&apos;ve visited.</p>
-        <p className="text-base md:text-xl lg:text-2xl leading-normal">Each visible star in the flag&apos;s blue canton represents a visited state, and the stars are ordered based on each State&apos;s admission to the Union.</p>
+        <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">Each visible star in the flag&apos;s blue canton represents a visited state, and the stars are ordered based on each State&apos;s admission to the Union.</p>
+        <USFlagCanton />
       </div>
       <div>
         <h2 className="mb-2 lg:mb-4">Inspiration</h2>

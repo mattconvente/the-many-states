@@ -23,7 +23,6 @@ export default function USMap() {
       const newVisitedStates = [
         ...visitedStates,
         {
-          id: state.id,
           abbr: state.abbr,
           name: state.name,
           pathCoordinates: state.pathCoordinates,
@@ -69,7 +68,7 @@ export default function USMap() {
                 aria-label={state.name}
                 aria-checked={selectedStateAbbrs.includes(state.abbr)}
                 tabIndex={0}
-                id={state.id}
+                id={state.abbr}
                 name={state.name}
                 d={state.pathCoordinates}
                 data-tooltip-id={state.abbr}

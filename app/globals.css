@@ -45,4 +45,105 @@ body {
       @apply text-xl;
     }
   }
+
+  .canton path:not(.delaware) {
+    display: none;
+  }
+
+  .canton path.delaware,
+  .canton.animating path.delaware {
+    animation: none;
+  }
+
+  .canton.animating path {
+    display: block;
+    animation-name: animateIn;
+    animation-duration: 1000ms;
+    animation-delay: calc(var(--animation-order) * 2000ms);
+    animation-fill-mode: both;
+    animation-play-state: inherit;
+    animation-timing-function: ease-in-out;
+  }
+
+  .state-name li:not(.delaware) {
+    display: none;
+  }
+
+  .state-name li.delaware {
+    animation: none;
+  }
+
+  .state-name.animating li {
+    display: block;
+    animation-name: animateInOut;
+    animation-duration: 2000ms;
+    animation-delay: calc(var(--animation-order) * 2000ms);
+    animation-fill-mode: both;
+    animation-play-state: inherit;
+    animation-timing-function: ease-in-out;
+  }
+
+  .state-name.animating li.delaware {
+    animation-name: animateOut;
+    animation-duration: 1000ms;
+  }
+
+  .state-name.animating li.hawaii {
+    animation-name: animateIn;
+  }
+
+  @keyframes animateIn {
+    0% {
+      opacity: 0;
+      display: none;
+    }
+
+    50% {
+      opacity: 1;
+      display: block;
+    }
+
+    100% {
+      opacity: 1;
+      display: block;
+    }
+  }
+
+  @keyframes animateInOut {
+    0% {
+      opacity: 0;
+      display: none;
+    }
+
+    25% {
+      opacity: 1;
+      display: block;
+    }
+
+    50% {
+      opacity: 1;
+      display: block;
+    }
+
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
+
+  @keyframes animateOut {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+      display: none;
+    }
+
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
 }

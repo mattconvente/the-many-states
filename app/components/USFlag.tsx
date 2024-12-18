@@ -44,7 +44,7 @@ export default function USFlag({ visitedStates = [] }: USFlagProps) {
                     "fill-yellow-400": hoveredVisitedState?.abbr === star.abbr,
                     "fill-white opacity-50": hoveredUnvisitedState?.abbr === star.abbr,
                   })}
-                  id={star.id}
+                  id={star.abbr}
                   d={star.pathCoordinates}
                 />
               ))}

@@ -1,17 +1,22 @@
 import { Dispatch, SetStateAction} from "react";
 
 export interface IState {
-  id: string;
   abbr: string;
   name: string;
   pathCoordinates: string;
 }
 
 export interface IStar {
-  id: string;
   abbr: string;
   name: string;
   pathCoordinates: string;
+}
+
+export interface IAnimatedStar {
+  abbr: string;
+  name: string;
+  pathCoordinates: string;
+  admissionDate: string;
 }
 
 export interface ITheManyStatesContext {
