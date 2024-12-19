@@ -112,7 +112,7 @@ export default function USFlagCanton() {
         </svg>
         </div>
         <div className="relative w-full sm:w-1/2">
-          <ul ref={stateDataRef} className={`state-name flex justify-center items-center text-center h-full ${isAnimating ? "animating" : ""}`}>
+          <ul ref={stateDataRef} className={`state-name flex min-h-11 md:min-h-0 justify-center items-center text-center h-full ${isAnimating ? "animating" : ""}`}>
             <li className="delaware">
               <div className="text-base md:text-xl lg:text-2xl font-bold">{starsForAnimatedCanton[0].name}</div>
               <div className="text-sm md:text-lg lg:text-xl">{starsForAnimatedCanton[0].admissionDate}</div>
