@@ -89,7 +89,8 @@ export default function USFlagCanton() {
 
   return (
     <div className="p-4 bg-slate-300">
-      <div className="grid grid-cols-2 gap-4 items-center">
+      <div className="flex flex-col sm:flex-row gap-2 lg:gap-4">
+        <div className="w-full sm:w-1/2">
         <svg width="" height="" viewBox="0 0 494 350" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M494 0H0V350H494V0Z" className="fill-[--color-old-glory-blue]"/>
           <g id="stars" ref={cantonRef} onAnimationEnd={handleAnimationEnd} className={`canton ${isAnimating ? "animating" : ""}`}>
@@ -109,7 +110,8 @@ export default function USFlagCanton() {
             ))}
           </g>
         </svg>
-        <div className="relative h-full">
+        </div>
+        <div className="relative w-full sm:w-1/2">
           <ul ref={stateDataRef} className={`state-name flex justify-center items-center text-center h-full ${isAnimating ? "animating" : ""}`}>
             <li className="delaware">
               <div className="text-base md:text-xl lg:text-2xl font-bold">{starsForAnimatedCanton[0].name}</div>
@@ -126,7 +128,7 @@ export default function USFlagCanton() {
               </li>
             ))}
           </ul>
-          <div className="absolute w-full bottom-0 text-center">
+          <div className="mt-4 sm:mt-none sm:absolute sm:bottom-0 w-full text-center">
             {renderAnimationButton()}
           </div>
         </div>
