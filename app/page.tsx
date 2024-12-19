@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-// import Button from "@/app/button";
 import USMap from "@/app/components/USMap";
 import { useTheManyStatesContext } from "@/app/context/TheManyStatesContext";
 
