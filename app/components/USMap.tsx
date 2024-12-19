@@ -55,7 +55,7 @@ export default function USMap() {
 
   return (
     <div>
-      <svg className="-mt-2 lg:-mt-6" width="" height="" viewBox="0 0 959 593" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="" height="" viewBox="0 0 959 593" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="us-map">
           {states.map((state) => (
               <path
