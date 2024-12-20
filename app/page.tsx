@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import USMap from "@/app/components/USMap";
 import { useTheManyStatesContext } from "@/app/context/TheManyStatesContext";
 
