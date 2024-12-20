@@ -33,7 +33,7 @@ export default function RootLayout({
         >
             <TheManyStatesProvider>
               <Header />
-              <main className="pt-4 pb-4 lg:pt-10 lg:pb-10 m-0">
+              <main className="pt-4 pb-8 lg:pt-10 lg:pb-10 m-0">
                 {children}
               </main>
               <Footer />
