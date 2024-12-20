@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import clsx from "clsx";
 import { useSearchParams } from "next/navigation";
 import { useTheManyStatesContext } from "@/app/context/TheManyStatesContext";
@@ -8,7 +8,7 @@ import { states } from "@/app/data";
 import { IState } from "@/app/types";
 import USFlag from "@/app/components/USFlag";
 
-export default function FlagPage() {
+function FlagPageContent() {
   const {
     visitedStates,
     unvisitedStates,
@@ -41,7 +41,7 @@ export default function FlagPage() {
       setVisitedStates(tempVisitedStates);
       setUnvisitedStates(tempUnvisitedStates);
     }
-  }, [visitedStates]);
+  }, [visitedStates, searchParams, setUnvisitedStates, setVisitedStates]);
 
   const sortedVisitedStatesByName = visitedStates.sort(function(a, b) {
     return a.name.localeCompare(b.name);
@@ -110,5 +110,14 @@ export default function FlagPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function FlagPage() {
+  return (
+    // TODO: make Loading component
+    <Suspense name="Flag Page" fallback={<div>Loading...</div>}>
+      <FlagPageContent />
+    </Suspense>
   );
 }
