@@ -7,38 +7,29 @@ import { useTheManyStatesContext } from "@/app/context/TheManyStatesContext";
 export const useToggleVisitedStates = () => {
   const {
     visitedStates,
-    unvisitedStates,
     setVisitedStates,
     setUnvisitedStates,
   } = useTheManyStatesContext();
 
+  const visitedStateAbbrSet = new Set(visitedStates.map((s) => s.abbr));
+
   const toggleVisitedStates = (state: IState) => {
-    const checkStateIsSelected =
-      visitedStates.some((s: IState) => s.abbr === state.abbr);
+    const isVisited = visitedStateAbbrSet.has(state.abbr);
 
-    if (!checkStateIsSelected) {
-      const newVisitedStates = [
-        ...visitedStates,
-        {
-          abbr: state.abbr,
-          name: state.name,
-          pathCoordinates: state.pathCoordinates,
-        },
-      ];
-      setVisitedStates(newVisitedStates);
-
-      const newUnvisitedStates = states.filter((s: IState) =>
-        !newVisitedStates.some((visited) => visited.abbr === s.abbr)
-      );
-      setUnvisitedStates(newUnvisitedStates);
+    let newVisitedStates: IState[] = [];
+    if (isVisited) {
+      newVisitedStates = visitedStates.filter((s) => s.abbr !== state.abbr);
     } else {
-      const newVisitedStates = visitedStates.filter((s: IState) => s.abbr !== state.abbr);
-      setVisitedStates(newVisitedStates);
-
-      const newUnvisitedStates = [...unvisitedStates, state];
-      setUnvisitedStates(newUnvisitedStates);
+      newVisitedStates = [...visitedStates, state];
     }
+
+    setVisitedStates(newVisitedStates);
+
+    const newUnvisitedStates = states.filter(
+      (s) => !newVisitedStates.some((vs) => vs.abbr === s.abbr)
+    );
+    setUnvisitedStates(newUnvisitedStates);
   };
 
   return toggleVisitedStates;
-};
+}
