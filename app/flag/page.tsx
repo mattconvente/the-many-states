@@ -55,6 +55,36 @@ function FlagPageContent() {
     ? "You've visited all 50 states! Awesome!"
     : `You've visited ${visitedStates.length} of 50 states!`;
 
+  const statesLeftToSeeMarkup = unvisitedStates.length === 0
+    ? null
+    : (
+      <div>
+        <h3 className="mb-1">States left to see</h3>
+        <ul className="inline-flex flex-wrap gap-1">
+          {sortedUnvisitedStatesByName.map((us, index) => (
+            <li
+              key={us.abbr}
+              role="button"
+              tabIndex={0}
+              className={clsx(
+                "inline-flex cursor-default transition-colors outline-none hover:bg-slate-50 focus:bg-slate-50",
+                {
+                  "after:content-[',']": index !== sortedUnvisitedStatesByName.length - 1
+                }
+              )}
+              onMouseOver={() => setHoveredUnvisitedState(us)}
+              onFocus={() => setHoveredUnvisitedState(us)}
+              onMouseLeave={() => setHoveredUnvisitedState(null)}
+              onBlur={() => setHoveredUnvisitedState(null)}
+            >
+              {us.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+
+
   return (
     <div className="grid gap-8 items-start grid-cols-1 lg:grid-cols-[2fr_1fr]">
       <USFlag visitedStates={visitedStates} />
@@ -84,30 +114,7 @@ function FlagPageContent() {
             ))}
           </ul>
         </div>
-        <div>
-          <h3 className="mb-1">States left to see</h3>
-          <ul className="inline-flex flex-wrap gap-1">
-            {sortedUnvisitedStatesByName.map((us, index) => (
-              <li
-                key={us.abbr}
-                role="button"
-                tabIndex={0}
-                className={clsx(
-                  "inline-flex cursor-default transition-colors outline-none hover:bg-slate-50 focus:bg-slate-50",
-                  {
-                    "after:content-[',']": index !== sortedUnvisitedStatesByName.length - 1
-                  }
-                )}
-                onMouseOver={() => setHoveredUnvisitedState(us)}
-                onFocus={() => setHoveredUnvisitedState(us)}
-                onMouseLeave={() => setHoveredUnvisitedState(null)}
-                onBlur={() => setHoveredUnvisitedState(null)}
-              >
-                {us.name}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {statesLeftToSeeMarkup}
       </div>
     </div>
   );
