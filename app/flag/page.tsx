@@ -1,18 +1,47 @@
 "use client"
 
-// import Link from "next/link";
-import React from "react";
+import React, { Suspense, useEffect } from "react";
 import clsx from "clsx";
+import { useSearchParams } from "next/navigation";
 import { useTheManyStatesContext } from "@/app/context/TheManyStatesContext";
+import { states } from "@/app/data";
+import { IState } from "@/app/types";
 import USFlag from "@/app/components/USFlag";
 
-export default function FlagPage() {
+function FlagPageContent() {
   const {
     visitedStates,
     unvisitedStates,
+    setVisitedStates,
+    setUnvisitedStates,
     setHoveredVisitedState,
     setHoveredUnvisitedState,
   } = useTheManyStatesContext();
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const visitedStatesParams = searchParams.get("visitedStates");
+
+    if (!visitedStatesParams) return;
+
+    const sortedVisitedStatesParams = visitedStatesParams?.split(",").sort(function(a, b) {
+      return a.localeCompare(b);
+    });
+
+    if (visitedStates.length === 0 && sortedVisitedStatesParams && sortedVisitedStatesParams.length > 0) {
+      const tempVisitedStates: IState[] = [];
+      states.map((state: IState) => {
+        if (sortedVisitedStatesParams.includes(state.abbr)) {
+          tempVisitedStates.push(state);
+        }
+      });
+      const tempUnvisitedStates: IState[] = states.filter((state: IState) =>
+        !tempVisitedStates.some((visited) => visited.abbr === state.abbr));
+      setVisitedStates(tempVisitedStates);
+      setUnvisitedStates(tempUnvisitedStates);
+    }
+  }, [visitedStates, searchParams, setUnvisitedStates, setVisitedStates]);
 
   const sortedVisitedStatesByName = visitedStates.sort(function(a, b) {
     return a.name.localeCompare(b.name);
@@ -22,14 +51,8 @@ export default function FlagPage() {
     return a.name.localeCompare(b.name);
   });
 
-  // const joinedListOfVisitedStates: string =
-  // sortedVisitedStatesByName.map((state) => state.name).join(", ");
-
-  // const joinedListOfUnvisitedStates: string =
-  // sortedUnvisitedStatesByName.map((state) => state.name).join(", ");
-
   const numVisitedStatesText = visitedStates.length === 50
-    ? "You've visited all 50 states! Nice work!"
+    ? "You've visited all 50 states! Awesome!"
     : `You've visited ${visitedStates.length} of 50 states!`;
 
   return (
@@ -40,7 +63,6 @@ export default function FlagPage() {
         <div>
           <h3 className="mb-1">States you&apos;ve visited</h3>
           <ul className="inline-flex flex-wrap gap-1">
-            {/* {joinedListOfVisitedStates} */}
             {sortedVisitedStatesByName.map((vs, index) => (
               <li
                 key={vs.abbr}
@@ -65,7 +87,6 @@ export default function FlagPage() {
         <div>
           <h3 className="mb-1">States left to see</h3>
           <ul className="inline-flex flex-wrap gap-1">
-            {/* {joinedListOfUnvisitedStates} */}
             {sortedUnvisitedStatesByName.map((us, index) => (
               <li
                 key={us.abbr}
@@ -89,5 +110,14 @@ export default function FlagPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function FlagPage() {
+  return (
+    // TODO: make Loading component
+    <Suspense name="Flag Page" fallback={<div>Loading...</div>}>
+      <FlagPageContent />
+    </Suspense>
   );
 }
