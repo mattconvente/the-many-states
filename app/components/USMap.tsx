@@ -6,43 +6,16 @@ import { Tooltip } from "react-tooltip";
 import { states } from "@/app/data";
 import { IState } from "@/app/types";
 import { useTheManyStatesContext } from '@/app/context/TheManyStatesContext';
+import { useToggleVisitedStates } from '@/app/hooks/useToggleVisitedStates';
 
 export default function USMap() {
-  const {
-    visitedStates,
-    unvisitedStates,
-    setVisitedStates,
-    setUnvisitedStates,
-  } = useTheManyStatesContext();
+  const { visitedStates } = useTheManyStatesContext();
+  const toggleVisitedStates = useToggleVisitedStates();
 
-  const toggleVisitedStates = (state: IState) => {
-    const checkStateIsSelected =
-      visitedStates.filter((s: IState) => s.abbr === state.abbr).length === 1;
+  const selectedStateAbbrs = visitedStates.map((state) => state.abbr);
 
-    if (!checkStateIsSelected) {
-      const newVisitedStates = [
-        ...visitedStates,
-        {
-          abbr: state.abbr,
-          name: state.name,
-          pathCoordinates: state.pathCoordinates,
-        }
-      ];
-      setVisitedStates(newVisitedStates);
-
-      const newUnvisitedStates = states.filter((s: IState) =>
-        !newVisitedStates.some((visited) => visited.abbr === s.abbr));
-      setUnvisitedStates(newUnvisitedStates);
-    } else {
-      const newVisitedStates = visitedStates.filter((s: IState) => s.abbr !== state.abbr);
-      setVisitedStates(newVisitedStates);
-
-      const newUnvisitedStates = [
-        ...unvisitedStates,
-        state
-      ];
-      setUnvisitedStates(newUnvisitedStates);
-    }
+  const handleOnClick = (state: IState) => {
+    toggleVisitedStates(state);
   };
 
   const handleOnKeyDown = (event: KeyboardEvent<SVGPathElement>, state: IState) => {
@@ -50,8 +23,6 @@ export default function USMap() {
       toggleVisitedStates(state);
     }
   }
-
-  const selectedStateAbbrs = visitedStates.map((state) => state.abbr);
 
   return (
     <div>
@@ -76,7 +47,7 @@ export default function USMap() {
                 data-tooltip-place="top"
                 data-tooltip-variant="light"
                 data-tooltip-offset={0}
-                onClick={() => toggleVisitedStates(state)}
+                onClick={() => handleOnClick(state)}
                 onKeyDown={(event) => handleOnKeyDown(event, state)}
               />
             )
