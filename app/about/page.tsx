@@ -11,13 +11,13 @@ export default function AboutPage() {
     <div className="max-w-prose m-auto flex flex-col gap-4 lg:gap-8">
       <div>
         <h2 className="mb-2 lg:mb-4">About</h2>
-        <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">The Many States is a web application where people can generate a personalized United States flag based on the States they&apos;ve visited.</p>
-        <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">Each visible star in the flag&apos;s blue canton represents a visited state, and the stars are ordered based on each State&apos;s admission to the Union.</p>
+        <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">The Many States is a web application where people can generate a personalized United States flag based on the states they&apos;ve visited.</p>
+        <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">Each visible star in the flag&apos;s blue canton represents a visited state, and the stars are ordered based on each state&apos;s admission to the Union.</p>
         <USFlagCanton />
       </div>
       <div>
         <h2 className="mb-2 lg:mb-4">Inspiration</h2>
-        <p className="text-base md:text-xl lg:text-2xl leading-normal">During my senior year at design school, one of my class projects was to design a personal narrative poster. Inspired by cross-country road trips with my long-haul trucker Dad and twin brother Mike, I wanted to represent the States I had visited in each year of my life.</p>
+        <p className="text-base md:text-xl lg:text-2xl leading-normal">During my senior year at design school, one of my class projects was to design a personal narrative poster. Inspired by cross-country road trips with my long-haul trucker Dad and twin brother Mike, I wanted to represent the states I had visited in each year of my life.</p>
         <div className="grid grid-flow-col grid-rows-4 grid-cols-2 gap-4 md:gap-6 md:-mx-12 my-4 md:my-8">
           <div className="row-span-2 self-start">
             <Image
@@ -44,8 +44,8 @@ export default function AboutPage() {
             />
           </div>
         </div>
-        <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">With help from my parents, I was able to recollect the States I had visited during the earliest years of my life.</p>
-        <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">Rather than highlight visited States on a geographic map like already-existing apps, as a creative twist, I chose to represent visited states as illuminated stars in the flag&apos;s blue canton.</p>
+        <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">With help from my parents, I was able to recollect the states I had visited during the earliest years of my life.</p>
+        <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">Rather than highlight visited states on a geographic map like existing apps, as a creative twist, I chose to represent visited states as illuminated stars in the flag&apos;s blue canton.</p>
         <p className="text-base md:text-xl lg:text-2xl leading-normal">I wanted others to be able to create their own flag, so I built The Many States. I have such fond memories of my childhood road trips and continue to enjoy exploring everything the United States has to offer.</p>
       </div>
       <div>
