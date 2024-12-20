@@ -1,6 +1,6 @@
 "use client"
 
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useMemo } from "react";
 import clsx from "clsx";
 import { useSearchParams } from "next/navigation";
 import { useTheManyStatesContext } from "@/app/context/TheManyStatesContext";
@@ -19,37 +19,39 @@ function FlagPageContent() {
   } = useTheManyStatesContext();
 
   const searchParams = useSearchParams();
+  const visitedStatesParams = useMemo(
+    () => searchParams.get("visitedStates")?.split(",").sort((a, b) => a.localeCompare(b)),
+    [searchParams]
+  );
 
   useEffect(() => {
-    const visitedStatesParams = searchParams.get("visitedStates");
+    if (!visitedStatesParams || visitedStatesParams.length === 0 || visitedStates.length > 0) return;
 
-    if (!visitedStatesParams) return;
-
-    const sortedVisitedStatesParams = visitedStatesParams?.split(",").sort(function(a, b) {
-      return a.localeCompare(b);
-    });
-
-    if (visitedStates.length === 0 && sortedVisitedStatesParams && sortedVisitedStatesParams.length > 0) {
-      const tempVisitedStates: IState[] = [];
-      states.map((state: IState) => {
-        if (sortedVisitedStatesParams.includes(state.abbr)) {
-          tempVisitedStates.push(state);
+    const { tempVisitedStates, tempUnvisitedStates } = states.reduce(
+      (acc, state) => {
+        if (visitedStatesParams.includes(state.abbr)) {
+          acc.tempVisitedStates.push(state);
+        } else {
+          acc.tempUnvisitedStates.push(state);
         }
-      });
-      const tempUnvisitedStates: IState[] = states.filter((state: IState) =>
-        !tempVisitedStates.some((visited) => visited.abbr === state.abbr));
-      setVisitedStates(tempVisitedStates);
-      setUnvisitedStates(tempUnvisitedStates);
-    }
-  }, [visitedStates, searchParams, setUnvisitedStates, setVisitedStates]);
+        return acc;
+      },
+      { tempVisitedStates: [] as IState[], tempUnvisitedStates: [] as IState[] }
+    );
 
-  const sortedVisitedStatesByName = visitedStates.sort(function(a, b) {
-    return a.name.localeCompare(b.name);
-  });
+    setVisitedStates(tempVisitedStates);
+    setUnvisitedStates(tempUnvisitedStates);
+  }, [visitedStatesParams, visitedStates.length, setVisitedStates, setUnvisitedStates]);
 
-  const sortedUnvisitedStatesByName = unvisitedStates.sort(function(a, b) {
-    return a.name.localeCompare(b.name);
-  });
+  const sortedVisitedStatesByName = useMemo(
+    () => [...visitedStates].sort((a, b) => a.name.localeCompare(b.name)),
+    [visitedStates]
+  );
+
+  const sortedUnvisitedStatesByName = useMemo(
+    () => [...unvisitedStates].sort((a, b) => a.name.localeCompare(b.name)),
+    [unvisitedStates]
+  );
 
   const numVisitedStatesText = visitedStates.length === 50
     ? "You've visited all 50 states! Awesome!"
@@ -83,7 +85,6 @@ function FlagPageContent() {
         </ul>
       </div>
     );
-
 
   return (
     <div className="grid gap-8 items-start grid-cols-1 lg:grid-cols-[2fr_1fr]">
