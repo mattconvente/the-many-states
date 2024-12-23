@@ -13,7 +13,7 @@ export default function Home() {
   const { visitedStates } = useTheManyStatesContext();
   const toggleVisitedStates = useToggleVisitedStates();
 
-  const generateFlagClasses = "transition-all font-bold py-2.5 px-8 md:py-4 md:px-20 text-sm md:text-lg text-white rounded-md md:rounded-lg bg-gradient-to-r from-[--color-old-glory-red] to-[--color-old-glory-blue] outline-none outline-2 outline-offset-2 outline-transparent hover:outline-[--color-old-glory-blue] focus-visible:outline-[--color-old-glory-blue]"
+  const generateFlagClasses = "transition-all font-bold py-2.5 px-8 md:py-4 md:px-12 text-sm md:text-lg text-white rounded-md md:rounded-lg bg-gradient-to-r from-[--color-old-glory-red] to-[--color-old-glory-blue] outline-none outline-2 outline-offset-2 outline-transparent hover:outline-[--color-old-glory-blue] focus-visible:outline-[--color-old-glory-blue]"
 
   return (
     <div className="flex flex-col items-center">

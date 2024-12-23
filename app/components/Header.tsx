@@ -31,7 +31,13 @@ export default function Header() {
           href="/"
           className={`${navClasses} ${pathname === "/" ? "bg-slate-50" : "underline underline-offset-2"}`}
         >
-          Home
+          My Map
+        </Link>
+        <Link
+          href="/flag"
+          className={`${navClasses} ${pathname === "/flag" ? "bg-slate-50" : "underline underline-offset-2"}`}
+        >
+          My Flag
         </Link>
         <Link
           href="/about"
