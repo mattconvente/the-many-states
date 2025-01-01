@@ -152,7 +152,7 @@ export default function AboutPage() {
       <div className="max-w-prose mx-auto">
         <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">With help from my parents, I was able to recollect the states I had visited during the earliest years of my life.</p>
         <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">Rather than highlight visited states on a geographic map like existing apps, as a creative twist, I chose to represent visited states as illuminated stars in the flag&apos;s blue canton.</p>
-        <div className="my-4 lg:my-6 max-w-xs md:max-w-md lg:max-w-lg mx-auto">
+        <div className="my-4 lg:my-6 md:max-w-md lg:max-w-lg mx-auto">
           <Image
             src="/the-many-states-of-matt-convente.jpg"
             alt="The Many States of Matt Convente personal narrative poster."
