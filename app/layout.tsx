@@ -15,6 +15,14 @@ const libreCaslonText = Libre_Caslon_Text({
 export const metadata: Metadata = {
   title: "The Many States",
   description: "The Many States is a web application where people can create a personalized United States flag based on the States they've visited. Each visible star in the flag's blue canton represents a visited state, and the stars are ordered based on each State's admission to the Union.",
+  openGraph: {
+    title: "The Many States",
+    description: "Create a personalized United States flag based on the states you've visited.",
+    url: "https://www.themanystates.com",
+    siteName: "The Many States",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
