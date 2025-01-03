@@ -36,7 +36,7 @@ export default function Home() {
           href="/flag"
           className={`${generateFlagClasses} ${visitedStates.length > 0 ? "opacity-1 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         >
-          Generate your flag
+          Create your flag
         </Link>
       </div>
     </div>

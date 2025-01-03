@@ -11,7 +11,7 @@ export default function AboutPage() {
     <div className="grid grid-cols-1 gap-4 lg:gap-8">
       <div className="max-w-prose mx-auto">
         <h2 className="mb-2 lg:mb-4">About</h2>
-        <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">The Many States is a web application where people can generate a personalized United States flag based on the states they&apos;ve visited.</p>
+        <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">The Many States is a web application where people can create a personalized United States flag based on the states they&apos;ve visited.</p>
         <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">Each visible star in the flag&apos;s blue canton represents a visited state, and the stars are ordered based on each state&apos;s admission to the Union.</p>
         <USFlagCanton />
       </div>
