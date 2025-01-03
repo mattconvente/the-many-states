@@ -20,8 +20,22 @@ export const metadata: Metadata = {
     description: "Create a personalized United States flag based on the states you've visited.",
     url: "https://www.themanystates.com",
     siteName: "The Many States",
+    images: [
+      {
+        url: "https://www.themanystates.com/og.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Many States",
+    description: "Create a personalized United States flag based on the states you've visited.",
+    creator: "@mattconvente",
+    images: "https://www.themanystates.com/og.png",
   },
 };
 
