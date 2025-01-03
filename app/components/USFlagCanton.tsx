@@ -112,10 +112,29 @@ export default function USFlagCanton() {
         </svg>
         </div>
         <div className="relative w-full sm:w-1/2">
-          <ul ref={stateDataRef} className={`state-name flex min-h-11 md:min-h-0 justify-center items-center text-center h-full ${isAnimating ? "animating" : ""}`}>
+          <ul ref={stateDataRef} className={`state-name flex min-h-[132px] md:min-h-0 justify-center pt-4 sm:pt-5 md:pt-8 text-center h-full ${isAnimating ? "animating" : ""}`}>
             <li className="delaware">
-              <div className="text-base md:text-xl lg:text-2xl font-bold">{starsForAnimatedCanton[0].name}</div>
-              <div className="text-sm md:text-lg lg:text-xl">{starsForAnimatedCanton[0].admissionDate}</div>
+              <picture
+                className="inline-flex mb-2 sm:mb-3"
+              >
+                <source
+                  type="image/webp"
+                  srcSet={`https://flagcdn.com/h60/us-${starsForAnimatedCanton[0].abbr.toLowerCase()}.webp,
+                  https://flagcdn.com/h120/us-${starsForAnimatedCanton[0].abbr.toLowerCase()}.webp 2x`}
+                />
+                <source
+                  type="image/png"
+                  srcSet={`https://flagcdn.com/h60/us-${starsForAnimatedCanton[0].abbr.toLowerCase()}.png,
+                  https://flagcdn.com/h120/us-${starsForAnimatedCanton[0].abbr.toLowerCase()}.png 2x`}
+                />
+                <img
+                  src={`https://flagcdn.com/h60/us-${starsForAnimatedCanton[0].abbr.toLowerCase()}.png`}
+                  height="60"
+                  alt={`Flag of ${starsForAnimatedCanton[0].name}`}
+                />
+              </picture>
+              <div className="text-base sm:text-2xl font-bold">{starsForAnimatedCanton[0].name}</div>
+              <div className="text-sm sm:text-xl">{starsForAnimatedCanton[0].admissionDate}</div>
             </li>
             {starsForAnimatedCanton.slice(1).map((star: IAnimatedStar, index) => (
               <li
@@ -123,6 +142,25 @@ export default function USFlagCanton() {
                 className={star.abbr === "HI" ? "hawaii" : ""}
                 style={{["--animation-order"]: index + 1} as React.CSSProperties}
               >
+                <picture
+                className="inline-flex mb-2 sm:mb-3"
+              >
+                <source
+                  type="image/webp"
+                  srcSet={`https://flagcdn.com/h60/us-${star.abbr.toLowerCase()}.webp,
+                  https://flagcdn.com/h120/us-${star.abbr.toLowerCase()}.webp 2x`}
+                />
+                <source
+                  type="image/png"
+                  srcSet={`https://flagcdn.com/h60/us-${star.abbr.toLowerCase()}.png,
+                  https://flagcdn.com/h120/us-${star.abbr.toLowerCase()}.png 2x`}
+                />
+                <img
+                  src={`https://flagcdn.com/h40/us-${star.abbr.toLowerCase()}.png`}
+                  height="60"
+                  alt={`Flag of ${star.name}`}
+                />
+              </picture>
                 <div className="text-base md:text-xl lg:text-2xl font-bold">{star.name}</div>
                 <div className="text-sm md:text-lg lg:text-xl">{star.admissionDate}</div>
               </li>
