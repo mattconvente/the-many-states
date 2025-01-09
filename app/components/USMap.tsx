@@ -5,11 +5,11 @@ import clsx from "clsx";
 import { Tooltip } from "react-tooltip";
 import { states } from "@/app/data";
 import { IState } from "@/app/types";
-import { useTheManyStatesContext } from '@/app/context/TheManyStatesContext';
+import { useTheManyStatesStore } from "@/app/store";
 import { useToggleVisitedStates } from '@/app/hooks/useToggleVisitedStates';
 
 export default function USMap() {
-  const { visitedStates } = useTheManyStatesContext();
+  const visitedStates = useTheManyStatesStore((state) => state.visitedStates);
   const toggleVisitedStates = useToggleVisitedStates();
 
   const selectedStateAbbrs = visitedStates.map((state) => state.abbr);

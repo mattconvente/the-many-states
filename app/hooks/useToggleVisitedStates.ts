@@ -2,14 +2,12 @@
 
 import { states } from "@/app/data";
 import { IState } from "@/app/types";
-import { useTheManyStatesContext } from "@/app/context/TheManyStatesContext";
+import { useTheManyStatesStore } from "@/app/store";
 
 export const useToggleVisitedStates = () => {
-  const {
-    visitedStates,
-    setVisitedStates,
-    setUnvisitedStates,
-  } = useTheManyStatesContext();
+  const visitedStates = useTheManyStatesStore((state) => state.visitedStates);
+  const setVisitedStates = useTheManyStatesStore((state) => state.setVisitedStates);
+  const setUnvisitedStates = useTheManyStatesStore((state) => state.setUnvisitedStates);
 
   const visitedStateAbbrSet = new Set(visitedStates.map((s) => s.abbr));
 
