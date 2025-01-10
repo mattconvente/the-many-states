@@ -4,14 +4,15 @@ import React from "react";
 import clsx from "clsx";
 import { IState, IStar } from "../types";
 import { stars } from "../data";
-import { useTheManyStatesContext } from "@/app/context/TheManyStatesContext";
+import { useTheManyStatesStore } from "@/app/store";
 
 interface USFlagProps {
   visitedStates: IState[];
 }
 
 export default function USFlag({ visitedStates = [] }: USFlagProps) {
-  const { hoveredVisitedState, hoveredUnvisitedState } = useTheManyStatesContext();
+  const hoveredVisitedState = useTheManyStatesStore((state) => state.hoveredVisitedState);
+  const hoveredUnvisitedState = useTheManyStatesStore((state) => state.hoveredUnvisitedState);
   const selectedStateAbbrs = visitedStates.map((state: IState) => state.abbr);
 
   return (

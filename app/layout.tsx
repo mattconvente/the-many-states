@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Libre_Caslon_Text } from "next/font/google";
 import "@/app/globals.css";
 import { ViewTransitions } from "next-view-transitions";
-import { TheManyStatesProvider } from "@/app/context/TheManyStatesContext";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
@@ -53,13 +52,11 @@ export default function RootLayout({
         <body
           className={`${libreCaslonText.className} antialiased p-6 lg:p-12 mx-auto my-0 max-w-[1728px]`}
         >
-            <TheManyStatesProvider>
-              <Header />
-              <main className="pt-4 pb-8 lg:pt-10 lg:pb-10 m-0">
-                {children}
-              </main>
-              <Footer />
-            </TheManyStatesProvider>
+          <Header />
+          <main className="pt-4 pb-8 lg:pt-10 lg:pb-10 m-0">
+            {children}
+          </main>
+          <Footer />
         </body>
       </html>
     </ViewTransitions>

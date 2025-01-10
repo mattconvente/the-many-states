@@ -4,13 +4,14 @@ import React from "react";
 import { Link } from "next-view-transitions";
 import { states } from "@/app/data";
 import { IState } from "@/app/types";
-import { useTheManyStatesContext } from "@/app/context/TheManyStatesContext";
+import { useTheManyStatesStore } from "@/app/store";
 import { useToggleVisitedStates } from '@/app/hooks/useToggleVisitedStates';
 import USMap from "@/app/components/USMap";
 import Checkbox from "@/app/components/Checkbox";
 
+
 export default function Home() {
-  const { visitedStates } = useTheManyStatesContext();
+  const visitedStates = useTheManyStatesStore((state) => state.visitedStates);
   const toggleVisitedStates = useToggleVisitedStates();
 
   const generateFlagClasses = "transition-all font-bold py-2.5 px-8 md:py-4 md:px-12 text-sm md:text-lg text-white rounded-md md:rounded-lg bg-gradient-to-r from-[--color-old-glory-red] to-[--color-old-glory-blue] outline-none outline-2 outline-offset-2 outline-transparent hover:outline-[--color-old-glory-blue] focus-visible:outline-[--color-old-glory-blue]"

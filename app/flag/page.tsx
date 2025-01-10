@@ -4,20 +4,18 @@ import React, { Suspense, useEffect, useMemo } from "react";
 import clsx from "clsx";
 import { useSearchParams } from "next/navigation";
 import { Link } from "next-view-transitions";
-import { useTheManyStatesContext } from "@/app/context/TheManyStatesContext";
+import { useTheManyStatesStore } from "@/app/store";
 import { states } from "@/app/data";
 import { IState } from "@/app/types";
 import USFlag from "@/app/components/USFlag";
 
 function FlagPageContent() {
-  const {
-    visitedStates,
-    unvisitedStates,
-    setVisitedStates,
-    setUnvisitedStates,
-    setHoveredVisitedState,
-    setHoveredUnvisitedState,
-  } = useTheManyStatesContext();
+  const visitedStates = useTheManyStatesStore((state) => state.visitedStates);
+  const unvisitedStates = useTheManyStatesStore((state) => state.unvisitedStates);
+  const setVisitedStates = useTheManyStatesStore((state) => state.setVisitedStates);
+  const setUnvisitedStates = useTheManyStatesStore((state) => state.setUnvisitedStates);
+  const setHoveredVisitedState = useTheManyStatesStore((state) => state.setHoveredVisitedState);
+  const setHoveredUnvisitedState = useTheManyStatesStore((state) => state.setHoveredUnvisitedState);
 
   const searchParams = useSearchParams();
   const visitedStatesParams = useMemo(
@@ -26,19 +24,18 @@ function FlagPageContent() {
   );
 
   useEffect(() => {
-    if (!visitedStatesParams || visitedStatesParams.length === 0 || visitedStates.length > 0) return;
+    if (!visitedStatesParams || visitedStates.length > 0) return;
 
-    const { tempVisitedStates, tempUnvisitedStates } = states.reduce(
-      (acc, state) => {
-        if (visitedStatesParams.includes(state.abbr)) {
-          acc.tempVisitedStates.push(state);
-        } else {
-          acc.tempUnvisitedStates.push(state);
-        }
-        return acc;
-      },
-      { tempVisitedStates: [] as IState[], tempUnvisitedStates: [] as IState[] }
-    );
+    const tempVisitedStates: IState[] = [];
+    const tempUnvisitedStates: IState[] = [];
+
+    states.forEach((state) => {
+      if (visitedStatesParams.includes(state.abbr)) {
+        tempVisitedStates.push(state);
+      } else {
+        tempUnvisitedStates.push(state);
+      }
+    });
 
     setVisitedStates(tempVisitedStates);
     setUnvisitedStates(tempUnvisitedStates);
@@ -94,9 +91,9 @@ function FlagPageContent() {
     <div>
         <h3 className="mb-1">States you&apos;ve visited</h3>
         <ul className="inline-flex flex-wrap gap-1">
-          {sortedVisitedStatesByName.map((vs, index) => (
+          {sortedVisitedStatesByName.map((visitedState, index) => (
             <li
-              key={vs.abbr}
+              key={visitedState.abbr}
               role="button"
               tabIndex={0}
               className={clsx(
@@ -105,12 +102,12 @@ function FlagPageContent() {
                   "after:content-[',']": index !== sortedVisitedStatesByName.length - 1
                 }
               )}
-              onMouseOver={() => setHoveredVisitedState(vs)}
-              onFocus={() => setHoveredVisitedState(vs)}
+              onMouseOver={() => setHoveredVisitedState(visitedState)}
+              onFocus={() => setHoveredVisitedState(visitedState)}
               onMouseLeave={() => setHoveredVisitedState(null)}
               onBlur={() => setHoveredVisitedState(null)}
             >
-              {vs.name}
+              {visitedState.name}
             </li>
           ))}
         </ul>
@@ -123,9 +120,9 @@ function FlagPageContent() {
       <div>
         <h3 className="mb-1">States left to see</h3>
         <ul className="inline-flex flex-wrap gap-1">
-          {sortedUnvisitedStatesByName.map((us, index) => (
+          {sortedUnvisitedStatesByName.map((unvisitedState, index) => (
             <li
-              key={us.abbr}
+              key={unvisitedState.abbr}
               role="button"
               tabIndex={0}
               className={clsx(
@@ -134,12 +131,12 @@ function FlagPageContent() {
                   "after:content-[',']": index !== sortedUnvisitedStatesByName.length - 1
                 }
               )}
-              onMouseOver={() => setHoveredUnvisitedState(us)}
-              onFocus={() => setHoveredUnvisitedState(us)}
+              onMouseOver={() => setHoveredUnvisitedState(unvisitedState)}
+              onFocus={() => setHoveredUnvisitedState(unvisitedState)}
               onMouseLeave={() => setHoveredUnvisitedState(null)}
               onBlur={() => setHoveredUnvisitedState(null)}
             >
-              {us.name}
+              {unvisitedState.name}
             </li>
           ))}
         </ul>
