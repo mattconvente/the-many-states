@@ -32,7 +32,7 @@ export async function GET(request: Request) {
         ? "I've visited all\u00A050\u00A0states!"
         : `I've visited ${numVisitedStates}\u00A0of\u00A050\u00A0states!`;
 
-    const imageResponse = new ImageResponse(
+    return new ImageResponse(
       (
         <div
           style={{
@@ -126,13 +126,6 @@ export async function GET(request: Request) {
         ],
       },
     );
-
-    return new Response(await imageResponse.arrayBuffer(), {
-      headers: {
-        "Content-Type": "image/png",
-        "Cache-Control": "public, immutable, no-transform, max-age=31536000",
-      },
-    });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {
     console.log(`${e.message}`);
