@@ -20,6 +20,7 @@ export async function generateMetadata(
     .filter((visitedState) => visitedState !== "")
     .length;
 
+  const canonicalUrl = `https://www.themanystates.com/flag/visitedStates?=${encodeURI(filteredVisitedStatesAbbrs)}`;
   const dynamicOGImage = `api/og?visitedStates=${encodeURI(filteredVisitedStatesAbbrs)}`;
 
   const numVisitedStatesText =
@@ -29,13 +30,21 @@ export async function generateMetadata(
 
   return numVisitedStates === 0
     ? {
+      metadataBase: new URL("https://www.themanystates.com"),
+      alternates: {
+        canonical: "https://www.themanystates.com",
+      },
       openGraph: defaultOpenGraphMetadata,
       twitter: defaultTwitterMetadata,
     } : {
+      metadataBase: new URL("https://www.themanystates.com"),
+      alternates: {
+        canonical: canonicalUrl,
+      },
       openGraph: {
         title: "The Many States",
         description: numVisitedStatesText,
-        url: "/",
+        url: canonicalUrl,
         siteName: "The Many States",
         images: [
           {
