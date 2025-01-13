@@ -4,6 +4,7 @@ import "@/app/globals.css";
 import { ViewTransitions } from "next-view-transitions";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import { defaultOpenGraphMetadata, defaultTwitterMetadata } from "@/app/metadata/metadata";
 
 const libreCaslonText = Libre_Caslon_Text({
   subsets: ["latin"],
@@ -11,31 +12,16 @@ const libreCaslonText = Libre_Caslon_Text({
   weight: ["400", "700"],
   style: ["normal", "italic"],
 });
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.themanystates.com"),
+  alternates: {
+    canonical: '/',
+  },
   title: "The Many States",
   description: "The Many States is a web application where people can create a personalized United States flag based on the States they've visited. Each visible star in the flag's blue canton represents a visited state, and the stars are ordered based on each State's admission to the Union.",
-  openGraph: {
-    title: "The Many States",
-    description: "Create a personalized United States flag based on the states you've visited.",
-    url: "https://www.themanystates.com",
-    siteName: "The Many States",
-    images: [
-      {
-        url: "https://www.themanystates.com/og.png",
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "The Many States",
-    description: "Create a personalized United States flag based on the states you've visited.",
-    creator: "@mattconvente",
-    images: "https://www.themanystates.com/og.png",
-  },
+  openGraph: defaultOpenGraphMetadata,
+  twitter: defaultTwitterMetadata,
 };
 
 export default function RootLayout({

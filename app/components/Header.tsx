@@ -4,9 +4,16 @@ import React from "react";
 import Image from "next/image";
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
+import { useTheManyStatesStore } from "@/app/store";
+import { useGetSortedVisitedStateAbbrs } from "@/app/hooks/useGetSortedVisitedStateAbbrs";
 
 export default function Header() {
   const pathname = usePathname();
+  const visitedStates = useTheManyStatesStore((state) => state.visitedStates);
+  const sortedVisitedStateAbbrs = useGetSortedVisitedStateAbbrs(visitedStates);
+  const flagHref = visitedStates.length > 0
+    ? `/flag?visitedStates=${encodeURI(sortedVisitedStateAbbrs.join(","))}`
+    : "/flag";
   const navClasses = "outline-none hover:no-underline focus:no-underline focus-visible:outline-black focus-visible:rounded-sm";
 
   return (
@@ -34,7 +41,7 @@ export default function Header() {
           My Map
         </Link>
         <Link
-          href="/flag"
+          href={flagHref}
           className={`${navClasses} ${pathname === "/flag" ? "bg-slate-50" : "underline underline-offset-2"}`}
         >
           My Flag
