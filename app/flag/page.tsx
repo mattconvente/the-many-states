@@ -53,6 +53,8 @@ export async function generateMetadata(
             alt: numVisitedStatesText,
           },
         ],
+        locale: "en_US",
+        type: "website",
       },
       twitter: {
         card: "summary_large_image",
