@@ -21,7 +21,7 @@ export async function generateMetadata(
     .length;
 
   const baseURL = new URL('https://www.themanystates.com');
-  const canonicalUrl = `${baseURL.origin}/flag/visitedStates?=${encodeURI(filteredVisitedStatesAbbrs)}`;
+  const canonicalUrl = `${baseURL.origin}/flag?visitedStates=${encodeURI(filteredVisitedStatesAbbrs)}`;
   const dynamicOGImage = `${baseURL.origin}/api/og?visitedStates=${encodeURI(filteredVisitedStatesAbbrs)}`;
 
   const numVisitedStatesText =
