@@ -19,5 +19,5 @@ export const defaultTwitterMetadata = {
   title: "The Many States",
   description: "Create a personalized United States flag based on the states you've visited.",
   creator: "@mattconvente",
-  images: "/og.png",
+  images: "http://www.themanystates.com/og.png",
 };
