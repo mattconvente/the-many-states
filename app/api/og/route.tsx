@@ -124,6 +124,10 @@ export async function GET(request: Request) {
             weight: 400,
           }
         ],
+        headers: {
+          "Content-Type": "image/png",
+          "Cache-Control": "public, immutable, no-transform, max-age=31536000",
+        },
       },
     );
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
