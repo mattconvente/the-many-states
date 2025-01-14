@@ -20,24 +20,23 @@ export async function generateMetadata(
     .filter((visitedState) => visitedState !== "")
     .length;
 
-  const canonicalUrl = `https://www.themanystates.com/flag/visitedStates?=${encodeURI(filteredVisitedStatesAbbrs)}`;
-  const dynamicOGImage = `api/og?visitedStates=${encodeURI(filteredVisitedStatesAbbrs)}`;
+  const baseURL = new URL('https://www.themanystates.com');
+  const canonicalUrl = `${baseURL.origin}/flag/visitedStates?=${encodeURI(filteredVisitedStatesAbbrs)}`;
+  const dynamicOGImage = `${baseURL.origin}/api/og?visitedStates=${encodeURI(filteredVisitedStatesAbbrs)}`;
 
   const numVisitedStatesText =
     numVisitedStates === 50
       ? "I've visited all 50 states!"
       : `I've visited ${numVisitedStates} of 50 states!`;
 
-  return numVisitedStates === 0
+  const flagPageMetadata = numVisitedStates === 0
     ? {
-      metadataBase: new URL("https://www.themanystates.com"),
       alternates: {
         canonical: "https://www.themanystates.com",
       },
       openGraph: defaultOpenGraphMetadata,
       twitter: defaultTwitterMetadata,
     } : {
-      metadataBase: new URL("https://www.themanystates.com"),
       alternates: {
         canonical: canonicalUrl,
       },
@@ -62,6 +61,8 @@ export async function generateMetadata(
         images: dynamicOGImage,
       },
     };
+
+  return flagPageMetadata;
 }
 
 export default function Page() {

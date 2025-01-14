@@ -15,6 +15,9 @@ const libreCaslonText = Libre_Caslon_Text({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.themanystates.com"),
+  alternates: {
+    canonical: '/',
+  },
   title: "The Many States",
   description: "The Many States is a web application where people can create a personalized United States flag based on the States they've visited. Each visible star in the flag's blue canton represents a visited state, and the stars are ordered based on each State's admission to the Union.",
   openGraph: defaultOpenGraphMetadata,
