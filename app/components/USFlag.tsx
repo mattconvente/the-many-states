@@ -41,7 +41,7 @@ export default function USFlag({ visitedStates = [] }: USFlagProps) {
                   key={star.abbr}
                   className={clsx("transition", {
                     "fill-white": selectedStateAbbrs.includes(star.abbr),
-                    "fill-[--color-old-glory-blue]": !selectedStateAbbrs.includes(star.abbr),
+                    "fill-(--color-old-glory-blue)": !selectedStateAbbrs.includes(star.abbr),
                     "fill-yellow-400": hoveredVisitedState?.abbr === star.abbr,
                     "fill-white opacity-50": hoveredUnvisitedState?.abbr === star.abbr,
                   })}

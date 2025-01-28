@@ -14,13 +14,13 @@ export default function Header() {
   const flagHref = visitedStates.length > 0
     ? `/flag?visitedStates=${encodeURI(sortedVisitedStateAbbrs.join(","))}`
     : "/flag";
-  const navClasses = "outline-none hover:no-underline focus:no-underline focus-visible:outline-black focus-visible:rounded-sm";
+  const navClasses = "outline-hidden outline-black hover:no-underline focus:no-underline focus-visible:outline-2 focus-visible:rounded-xs";
 
   return (
     <header className="flex flex-col gap-2 md:gap-none md:flex-row items-center justify-between">
       <Link
         href="/"
-        className="focus-visible:rounded-sm focus-visible:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+        className="focus-visible:rounded-xs focus-visible:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
       >
         <div className="w-[275px] md:w-[360px]">
           <Image
