@@ -9,7 +9,7 @@ export default function USFlagCanton() {
   const [currentFlagIndex, setCurrentFlagIndex] = useState(0);
   const maxFlagIndex = starsForAnimatedCanton.length - 1;
 
-  const buttonClasses = "absolute transition-colors inline-flex justify-center items-center z-10 top-1/2 -mt-4 w-8 h-8 bg-slate-100 hover:bg-amber-200 focus-visible:bg-amber-200 outline-none border-2 border-slate-500 hover:border-[--color-old-glory-blue] focus-visible:border-[--color-old-glory-blue] rounded-full"
+  const buttonClasses = "absolute transition-colors inline-flex justify-center items-center z-10 top-1/2 -mt-4 w-8 h-8 bg-slate-100 hover:bg-amber-200 focus-visible:bg-amber-200 outline-hidden border-2 border-slate-500 hover:border-(--color-old-glory-blue) focus-visible:border-(--color-old-glory-blue) rounded-full"
 
   const incrementFlagIndex = () => {
     if (currentFlagIndex === maxFlagIndex) {
@@ -31,7 +31,7 @@ export default function USFlagCanton() {
     <div className="flex flex-col sm:flex-row gap-4 p-4 bg-slate-300 w-full max-w-full">
       <div className="w-full sm:w-1/2">
         <svg width="" height="" viewBox="0 0 494 350" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M494 0H0V350H494V0Z" className="fill-[--color-old-glory-blue]"/>
+          <path d="M494 0H0V350H494V0Z" className="fill-(--color-old-glory-blue)"/>
           <g id="stars" className="canton">
             {starsForAnimatedCanton.map((star: IAnimatedStar, index) => (
               <path

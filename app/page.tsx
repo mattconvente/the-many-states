@@ -17,9 +17,9 @@ export default function Home() {
   const toggleVisitedStates = useToggleVisitedStates();
   const sortedVisitedStateAbbrs = useGetSortedVisitedStateAbbrs(visitedStates);
 
-  const coreCtaClasses = "transition-all inline-flex justify-center items-center gap-3 font-bold py-2.5 px-8 md:py-4 md:px-12 text-sm md:text-lg rounded-md md:rounded-lg outline-none outline-2 outline-offset-2 outline-transparent";
-  const createFlagClasses = `${coreCtaClasses} text-white bg-gradient-to-r from-[--color-old-glory-red] to-[--color-old-glory-blue] hover:outline-[--color-old-glory-blue] focus-visible:outline-[--color-old-glory-blue]`;
-  const resetMapClasses = `${coreCtaClasses} bg-[--color-state-border-resting] hover:outline-foreground focus-visible:outline-foreground`;
+  const coreCtaClasses = "transition-all inline-flex justify-center items-center gap-3 cursor-pointer font-bold py-2.5 px-8 md:py-4 md:px-12 text-sm md:text-lg rounded-md md:rounded-lg outline-hidden outline-2 outline-offset-2 outline-transparent";
+  const createFlagClasses = `${coreCtaClasses} text-white bg-linear-to-r from-(--color-old-glory-red) to-(--color-old-glory-blue) hover:outline-(--color-old-glory-blue) focus-visible:outline-(--color-old-glory-blue)`;
+  const resetMapClasses = `${coreCtaClasses} bg-(--color-state-border-resting) hover:outline-foreground focus-visible:outline-foreground`;
 
   const handleResetMap = () => {
     setVisitedStates([]);
@@ -31,7 +31,7 @@ export default function Home() {
       <div className="w-full max-w-5xl items-center lg:-mt-4">
         <h2 className="text-center">Select the states you&apos;ve visited!</h2>
         <USMap />
-        <div className="md:hidden grid gap-5 grid-cols-[repeat(auto-fill,minmax(128px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(160px,1fr))] mt-4 px-2 py-4 rounded border-2 border-slate-400 bg-slate-300 shadow-inner max-h-56 [@media(min-height:720px)]:max-h-64 overflow-auto">
+        <div className="md:hidden grid gap-5 grid-cols-[repeat(auto-fill,minmax(128px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(160px,1fr))] mt-4 px-2 py-4 rounded-sm border-2 border-slate-400 bg-slate-300 shadow-inner max-h-56 [@media(min-height:720px)]:max-h-64 overflow-auto">
           {states.map((s: IState) => (
             <Checkbox
               key={s.abbr}
@@ -45,7 +45,7 @@ export default function Home() {
       <div className="w-full pt-4 flex flex-col sm:flex-row gap-4 justify-center">
         <Link
           href={`/flag?visitedStates=${encodeURI(sortedVisitedStateAbbrs.join(","))}`}
-          className={`${createFlagClasses} ${visitedStates.length > 0 ? "opacity-1 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+          className={`${createFlagClasses} ${visitedStates.length > 0 ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         >
           <span>Create your flag</span>
           <span className="inline-block h-3 w-[1.36125rem] md:h-4 md:w-[1.86125rem] text-white">
@@ -56,7 +56,7 @@ export default function Home() {
         </Link>
         <button
           type="button"
-          className={`${resetMapClasses} ${visitedStates.length > 0 ? "opacity-1 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+          className={`${resetMapClasses} ${visitedStates.length > 0 ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
           onClick={handleResetMap}
         >
           <span>Reset map</span>

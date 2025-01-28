@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const footerLinkClasses = "underline underline-offset-2 outline-hidden outline-black hover:no-underline focus:no-underline focus-visible:outline-2 focus-visible:rounded-xs";
 
   return (
     <footer className="flex flex-col gap-0.5 items-center justify-center text-sm md:text-base">
@@ -10,7 +11,7 @@ export default function Footer() {
         <li className="after:content-['•'] after:pl-2">
           <a
             href="https://www.mattconvente.com/"
-            className="underline underline-offset-2 outline-none hover:no-underline focus:no-underline focus-visible:outline-black focus-visible:rounded-sm"
+            className={footerLinkClasses}
           >
             MattConvente.com
           </a>
@@ -18,15 +19,15 @@ export default function Footer() {
         <li className="after:content-['•'] after:pl-2">
           <a
             href="https://www.linkedin.com/in/mattconvente/"
-            className="underline underline-offset-2 outline-none hover:no-underline focus:no-underline focus-visible:outline-black focus-visible:rounded-sm"
+            className={footerLinkClasses}
           >
             LinkedIn
           </a>
         </li>
         <li>
           <a
-            href="https://github.com/mattconvente/"
-            className="underline underline-offset-2 outline-none hover:no-underline focus:no-underline focus-visible:outline-black focus-visible:rounded-sm"
+            href="https://github.com/mattconvente/the-many-states"
+            className={footerLinkClasses}
           >
             GitHub
           </a>

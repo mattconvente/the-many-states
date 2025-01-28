@@ -5,7 +5,7 @@ import Image from 'next/image';
 import USFlagCanton from "@/app/components/USFlagCanton";
 
 export default function AboutPage() {
-  const textLinkClasses = "underline underline-offset-2 outline-none hover:no-underline focus:no-underline focus-visible:outline-black focus-visible:rounded-sm";
+  const textLinkClasses = "underline underline-offset-2 outline-hidden outline-black hover:no-underline focus:no-underline focus-visible:outline-2 focus-visible:rounded-xs";
 
   return (
     <div className="grid grid-cols-1 gap-4 lg:gap-8 justify-items-center">
@@ -173,7 +173,7 @@ export default function AboutPage() {
           <div>
             <h3 className="mb-2">Old Glory Red</h3>
             <div className="flex gap-2 md:gap-4 items-center">
-              <div className="w-8 h-8 md:w-16 md:h-16 lg:w-24 lg:h-24 bg-[--color-old-glory-red]"></div>
+              <div className="w-8 h-8 md:w-16 md:h-16 lg:w-24 lg:h-24 bg-(--color-old-glory-red)"></div>
               <ul className="text-sm md:text-base">
                 <li><strong>RGB:</strong> 179, 25, 66</li>
                 <li><strong>Hex:</strong> #B31942</li>
@@ -183,7 +183,7 @@ export default function AboutPage() {
           <div>
             <h3 className="mb-2">Old Glory Blue</h3>
             <div className="flex gap-2 md:gap-4 items-center">
-              <div className="w-8 h-8 md:w-16 md:h-16 lg:w-24 lg:h-24 bg-[--color-old-glory-blue]"></div>
+              <div className="w-8 h-8 md:w-16 md:h-16 lg:w-24 lg:h-24 bg-(--color-old-glory-blue)"></div>
               <ul className="text-sm md:text-base">
                 <li><strong>RGB:</strong> 10, 49, 97</li>
                 <li><strong>Hex:</strong> #0A3161</li>

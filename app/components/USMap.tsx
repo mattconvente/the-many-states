@@ -30,9 +30,9 @@ export default function USMap() {
         <g id="us-map">
           {states.map((state) => (
               <path
-                className={clsx("transition-colors cursor-pointer stroke-[--color-state-border-resting] outline-none", {
-                  "fill-[--color-state-fill-active] hover:fill-[--color-state-fill-hover-active] focus-visible:fill-[--color-state-fill-hover-active]": selectedStateAbbrs.includes(state.abbr),
-                  "fill-[--color-state-fill-resting] hover:fill-[--color-state-fill-hover] focus-visible:fill-[--color-state-fill-hover]": !selectedStateAbbrs.includes(state.abbr),
+                className={clsx("transition-colors cursor-pointer stroke-(--color-state-border-resting) outline-hidden", {
+                  "fill-(--color-state-fill-active) hover:fill-(--color-state-fill-hover-active) focus-visible:fill-(--color-state-fill-hover-active)": selectedStateAbbrs.includes(state.abbr),
+                  "fill-(--color-state-fill-resting) hover:fill-(--color-state-fill-hover) focus-visible:fill-(--color-state-fill-hover)": !selectedStateAbbrs.includes(state.abbr),
                 })}
                 key={state.abbr}
                 role="checkbox"
