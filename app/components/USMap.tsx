@@ -38,7 +38,7 @@ export default function USMap() {
                 role="checkbox"
                 aria-label={state.name}
                 aria-checked={selectedStateAbbrs.includes(state.abbr)}
-                tabIndex={0}
+                tabIndex={-1}
                 id={state.abbr}
                 name={state.name}
                 d={state.pathCoordinates}
