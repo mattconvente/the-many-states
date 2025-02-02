@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="lg:-mt-4 mb-4">Select the states you&apos;ve visited!</h1>
+      <h1 className="text-center lg:-mt-4 mb-4">Select the states you&apos;ve&nbsp;visited!</h1>
       <div className="w-full flex flex-col lg:flex-row gap-6 items-center">
         <div className="w-full lg:basis-2/3">
           <USMap />
