@@ -1,12 +1,14 @@
 "use client"
 
 import React from "react";
-import { Link } from "next-view-transitions";
+// import { Link } from "next-view-transitions";
 import { states } from "@/app/data";
 import { IState } from "@/app/types";
 import { useTheManyStatesStore } from "@/app/store";
 import { useToggleVisitedStates } from "@/app/hooks/useToggleVisitedStates";
 import { useGetSortedVisitedStateAbbrs } from "@/app/hooks/useGetSortedVisitedStateAbbrs";
+import Button from "@/app/components/Button";
+import Link from "@/app/components/Link";
 import USMap from "@/app/components/USMap";
 import StateCheckbox from "@/app/components/StateCheckbox";
 
@@ -16,10 +18,6 @@ export default function Home() {
   const setUnvisitedStates = useTheManyStatesStore((state) => state.setUnvisitedStates);
   const toggleVisitedStates = useToggleVisitedStates();
   const sortedVisitedStateAbbrs = useGetSortedVisitedStateAbbrs(visitedStates);
-
-  const coreCtaClasses = "transition w-full @lg:w-1/2 inline-flex justify-center items-center gap-3 cursor-pointer font-bold py-2.5 px-4 @lg:py-4 text-sm @lg:text-lg rounded-md @lg:rounded-lg outline-hidden outline-2 outline-offset-2 outline-transparent";
-  const createFlagClasses = `${coreCtaClasses} text-white bg-linear-to-r from-(--color-old-glory-red) to-(--color-old-glory-blue) hover:outline-(--color-old-glory-blue) focus-visible:outline-(--color-old-glory-blue)`;
-  const resetMapClasses = `${coreCtaClasses} bg-(--color-state-border-resting) hover:outline-foreground focus-visible:outline-foreground`;
 
   const handleResetMap = () => {
     setVisitedStates([]);
@@ -50,7 +48,7 @@ export default function Home() {
             <div className="w-full pb-4 lg:pb-0 lg:pt-4 flex flex-col @lg:flex-row gap-4 justify-center">
               <Link
                 href={`/flag?visitedStates=${encodeURI(sortedVisitedStateAbbrs.join(","))}`}
-                className={`${createFlagClasses} ${visitedStates.length > 0 ? "opacity-100 pointer-events-auto" : "opacity-33 pointer-events-none"}`}
+                className={`w-full @lg:w-1/2 @lg:px-2 @lg:py-4 @lg:text-lg @lg:rounded-lg ${visitedStates.length > 0 ? "opacity-100 pointer-events-auto" : "opacity-33 pointer-events-none"}`}
               >
                 <span>Create your flag</span>
                 <span className="inline-block h-3 w-[1.36125rem] @lg:h-4 @lg:w-[1.86125rem] text-white">
@@ -59,10 +57,10 @@ export default function Home() {
                   </svg>
                 </span>
               </Link>
-              <button
-                type="button"
-                className={`${resetMapClasses} ${visitedStates.length > 0 ? "opacity-100 pointer-events-auto" : "opacity-33 pointer-events-none"}`}
+              <Button
+                variant="secondary"
                 onClick={handleResetMap}
+                className={`w-full @lg:w-1/2 @lg:px-2 @lg:py-4 @lg:text-lg @lg:rounded-lg ${visitedStates.length > 0 ? "opacity-100 pointer-events-auto" : "opacity-33 pointer-events-none"}`}
               >
                 <span>Reset map</span>
                 <span className="inline-block w-4 h-4 @lg:w-5 @lg:h-5">
@@ -70,7 +68,7 @@ export default function Home() {
                     <path fill="currentColor" d="M94 187.1C120.8 124.1 183.3 80 256 80c39.7 0 77.8 15.8 105.9 43.9L414.1 176 360 176l-24 0 0 48 24 0 112 0 24 0 0-24 0-112 0-24-48 0 0 24 0 54.1L395.9 89.9C358.8 52.8 308.5 32 256 32C163.4 32 83.9 88.2 49.8 168.3L94 187.1zM64 369.9l52.1 52.1C153.2 459.2 203.5 480 256 480c92.5 0 171.8-56 206-135.9l-44.1-18.9C391 388.1 328.6 432 256 432c-39.7 0-77.8-15.8-105.9-43.9L97.9 336l54.1 0 24 0 0-48-24 0L40 288l-24 0 0 24 0 112 0 24 48 0 0-24 0-54.1z"/>
                   </svg>
                 </span>
-              </button>
+              </Button>
             </div>
           </div>
         </div>

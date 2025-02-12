@@ -3,10 +3,10 @@
 import React, { Suspense, useEffect, useMemo } from "react";
 import clsx from "clsx";
 import { useSearchParams } from "next/navigation";
-import { Link } from "next-view-transitions";
 import { useTheManyStatesStore } from "@/app/store";
 import { states } from "@/app/data";
 import { IState } from "@/app/types";
+import Link from "@/app/components/Link";
 import USFlag from "@/app/components/USFlag";
 
 function FlagPageContent() {
@@ -51,19 +51,17 @@ function FlagPageContent() {
     [unvisitedStates]
   );
 
-  const returnToMapButtonClasses = "inline-flex transition-all font-bold py-2.5 px-8 md:py-4 md:px-12 text-sm md:text-lg text-white rounded-md md:rounded-lg bg-linear-to-r from-(--color-old-glory-red) to-(--color-old-glory-blue) outline-hidden outline-2 outline-offset-2 outline-transparent hover:outline-(--color-old-glory-blue) focus-visible:outline-(--color-old-glory-blue)";
-
   const numVisitedStatesMarkup = visitedStates.length === 0
     ? (
       <React.Fragment>
         <h2 className="mb-4">Looks like you haven&apos;t selected any states.</h2>
         <h3 className="font-normal mb-4">Head back to the US map and select the states you&apos;ve&nbsp;visited.</h3>
-        <p className="text-center"><Link
-          href="/"
-          className={returnToMapButtonClasses}
-        >
-          Return to the US map
-        </Link>
+        <p className="text-center">
+          <Link
+            href="/"
+          >
+            Return to the US map
+          </Link>
         </p>
       </React.Fragment>
     )
