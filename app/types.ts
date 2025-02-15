@@ -16,3 +16,6 @@ export interface IAnimatedStar {
   pathCoordinates: string;
   admissionDate: string;
 }
+
+export type CtaSizes = "default" | "square";
+export type CtaVariants = "primary" | "secondary" | "facebook" | "x";
