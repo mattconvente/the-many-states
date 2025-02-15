@@ -3,13 +3,14 @@
 import React, { useState } from "react";
 import { IAnimatedStar } from "../types";
 import { starsForAnimatedCanton } from "../data";
-import Image from 'next/image';
+import IconArrowLeft from "@/app/components/icons/ArrowLeft";
+import IconArrowRight from "@/app/components/icons/ArrowRight";
 
 export default function USFlagCanton() {
   const [currentFlagIndex, setCurrentFlagIndex] = useState(0);
   const maxFlagIndex = starsForAnimatedCanton.length - 1;
 
-  const buttonClasses = "absolute transition-colors inline-flex justify-center items-center z-10 top-1/2 -mt-4 w-8 h-8 bg-slate-100 hover:bg-amber-200 focus-visible:bg-amber-200 outline-hidden border-2 border-slate-500 hover:border-(--color-old-glory-blue) focus-visible:border-(--color-old-glory-blue) rounded-full"
+  const buttonClasses = "absolute transition-colors inline-flex justify-center items-center cursor-pointer z-10 top-1/2 -mt-4 w-8 h-8 bg-slate-100 hover:bg-amber-200 focus-visible:bg-amber-200 outline-hidden border-2 border-slate-500 hover:border-(--color-old-glory-blue) focus-visible:border-(--color-old-glory-blue) rounded-full"
 
   const incrementFlagIndex = () => {
     if (currentFlagIndex === maxFlagIndex) {
@@ -46,10 +47,14 @@ export default function USFlagCanton() {
       </div>
       <div className="relative overflow-x-hidden w-full sm:w-1/2">
         <button type="button" className={`${buttonClasses} left-0`} onClick={decrementFlagIndex}>
-          <Image src="/arrow-left-sharp-regular.svg" width={16} height={14} alt={`Go to the previous state`} />
+          <span className="w-4">
+            <IconArrowLeft />
+          </span>
         </button>
         <button type="button" className={`${buttonClasses} right-0`} onClick={incrementFlagIndex}>
-          <Image src="/arrow-right-sharp-regular.svg" width={16} height={14} alt={`Go to the next state`} />
+          <span className="w-4">
+            <IconArrowRight />
+          </span>
         </button>
         <ul
           className="state-name relative transition flex items-center text-center h-full w-full"
