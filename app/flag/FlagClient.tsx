@@ -184,7 +184,7 @@ function FlagPageContent() {
   const socialSharingMarkup = visitedStates.length > 0
     ? (
     <div>
-      <h3 className="mb-1">Share on social media</h3>
+      <h3 className="mb-1">Share your flag</h3>
       <div className="flex gap-3 items-center">
         <Link
           href={fbShareLink}
