@@ -29,7 +29,7 @@ function FlagPageContent() {
   const copySocialShareUrlTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const numVisistedStatesContainerClasses = clsx("num-visited-states-container relative", {
-    "has-visited-states sticky bg-background border-b border-stone-400 pb-3 md:top-0 md:pt-6 md:-mt-6 lg:pt-12 lg:-mt-12": visitedStates.length > 0,
+    "has-visited-states lg:sticky bg-background border-b border-stone-400 pb-3 md:top-0 md:pb-6 md:pt-8 md:-mt-6 lg:pt-12 lg:-mt-12": visitedStates.length > 0,
   });
 
   const searchParams = useSearchParams();
@@ -70,9 +70,9 @@ function FlagPageContent() {
 
   const numVisitedStatesMarkup = visitedStates.length === 0
     ? (
-      <React.Fragment>
+      <div className="flex flex-col items-center">
         <h2 className="mb-4">Looks like you haven&apos;t selected any states.</h2>
-        <h3 className="font-normal mb-4">Head back to the US map and select the states you&apos;ve&nbsp;visited.</h3>
+        <h3 className="font-normal text-center lg:text-left mb-4">Head back to the US map and select the states you&apos;ve&nbsp;visited.</h3>
         <p className="text-center">
           <Link
             href="/"
@@ -80,16 +80,24 @@ function FlagPageContent() {
             Return to the US map
           </Link>
         </p>
-      </React.Fragment>
+      </div>
     )
       : visitedStates.length === 50
-        ? <h2>You&apos;ve visited all 50 states! Awesome!</h2>
-        : <h2>{`You've visited ${visitedStates.length} of 50 states!`}</h2>;
+        ? (
+            <h2 className="flex justify-center lg:justify-start">
+              You&apos;ve visited all 50 states! Awesome!
+            </h2>
+          )
+        : (
+          <h2 className="flex justify-center lg:justify-start">
+            {`You've visited ${visitedStates.length} of 50 states!`}
+          </h2>
+        );
 
   const hoverStatesMarkup = visitedStates.length === 0
     ? null
     : (
-      <div className="flex mt-2 gap-2 justify-start">
+      <div className="flex mt-2 gap-2 justify-center lg:justify-start">
         <span className="w-4">
           <IconHandPointer />
         </span>
@@ -102,7 +110,7 @@ function FlagPageContent() {
     : (
     <div>
         <h3 className="mb-1">States you&apos;ve visited</h3>
-        <div className="grid gap-1 grid-cols-[repeat(auto-fill,minmax(144px,1fr))]">
+        <div className="grid gap-1 grid-cols-[repeat(auto-fill,minmax(160px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(192px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(144px,1fr))]">
           {sortedVisitedStatesByName.map((visitedState) => (
             <div
               key={visitedState.abbr}
@@ -143,7 +151,7 @@ function FlagPageContent() {
     : (
       <div>
         <h3 className="mb-1">States left to see</h3>
-        <div className="grid gap-1 grid-cols-[repeat(auto-fill,minmax(144px,1fr))]">
+        <div className="grid gap-1 grid-cols-[repeat(auto-fill,minmax(160px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(192px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(144px,1fr))]">
           {sortedUnvisitedStatesByName.map((unvisitedState) => (
             <div
               key={unvisitedState.abbr}
@@ -254,7 +262,7 @@ function FlagPageContent() {
   ) : null;
 
   return (
-    <div className="grid gap-4 md:gap-6 lg:gap-8 items-start grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr]">
+    <div className="grid gap-4 md:gap-6 lg:gap-8 items-start grid-cols-1 lg:grid-cols-[2fr_1fr]">
       <USFlag
         className={`${visitedStates.length === 0 ? "opacity-60" : ""}`}
         visitedStates={visitedStates}
