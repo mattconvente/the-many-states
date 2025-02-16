@@ -5,7 +5,7 @@ export default function Footer() {
   const footerLinkClasses = "underline underline-offset-2 outline-hidden outline-black hover:no-underline focus:no-underline focus-visible:outline-2 focus-visible:rounded-xs";
 
   return (
-    <footer className="flex flex-col gap-0.5 items-center justify-center text-sm md:text-base">
+    <footer className="flex flex-col gap-0.5 items-center justify-center lg:mt-8 text-sm md:text-base">
       <div>Copyright &copy; {currentYear} Matt Convente</div>
       <ul className="inline-flex gap-2">
         <li className="after:content-['•'] after:pl-2">

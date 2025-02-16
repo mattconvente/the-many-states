@@ -8,7 +8,7 @@ export default function AboutPage() {
   const textLinkClasses = "underline underline-offset-2 outline-hidden outline-black hover:no-underline focus:no-underline focus-visible:outline-2 focus-visible:rounded-xs";
 
   return (
-    <div className="grid grid-cols-1 gap-4 lg:gap-8 justify-items-center">
+    <div className="grid grid-cols-1 gap-6 md:gap-8 justify-items-center">
       <div className="max-w-prose mx-auto">
         <h2 className="mb-2 lg:mb-4">About</h2>
         <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">The Many States is a web application where people can create a personalized United States flag based on the states they&apos;ve visited.</p>

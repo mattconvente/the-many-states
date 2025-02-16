@@ -36,10 +36,10 @@ export default function RootLayout({
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         </head>
         <body
-          className={`${libreCaslonText.className} antialiased p-6 lg:p-12 mx-auto my-0 max-w-[1728px]`}
+          className={`${libreCaslonText.className} antialiased p-6 md:px-6 md:py-12 lg:p-12 mx-auto my-0 max-w-[1728px]`}
         >
           <Header />
-          <main className="pt-4 pb-8 lg:pt-10 lg:pb-10 m-0">
+          <main className="pt-4 pb-8 md:py-10 lg:pt-10 lg:pb-10 m-0">
             {children}
           </main>
           <Footer />
