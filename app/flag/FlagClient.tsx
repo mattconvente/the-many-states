@@ -28,6 +28,10 @@ function FlagPageContent() {
   const [isSocialShareUrlCopied, setIsSocialShareUrlCopied] = useState(false);
   const copySocialShareUrlTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  const numVisistedStatesContainerClasses = clsx("num-visited-states-container relative", {
+    "has-visited-states sticky bg-background border-b border-stone-400 pb-3 md:top-0 md:pt-6 md:-mt-6 lg:pt-12 lg:-mt-12": visitedStates.length > 0,
+  });
+
   const searchParams = useSearchParams();
   const visitedStatesParams = useMemo(
     () => searchParams.get("visitedStates")?.split(",").sort((a, b) => a.localeCompare(b)),
@@ -98,27 +102,39 @@ function FlagPageContent() {
     : (
     <div>
         <h3 className="mb-1">States you&apos;ve visited</h3>
-        <ul className="inline-flex flex-wrap gap-1">
-          {sortedVisitedStatesByName.map((visitedState, index) => (
-            <li
+        <div className="grid gap-1 grid-cols-[repeat(auto-fill,minmax(144px,1fr))]">
+          {sortedVisitedStatesByName.map((visitedState) => (
+            <div
               key={visitedState.abbr}
               role="button"
               tabIndex={0}
-              className={clsx(
-                "inline-flex cursor-default transition-colors outline-hidden hover:bg-yellow-400 focus:bg-yellow-400",
-                {
-                  "after:content-[',']": index !== sortedVisitedStatesByName.length - 1
-                }
-              )}
+              className="inline-flex items-center p-1 cursor-default transition-colors outline-hidden hover:bg-yellow-400 focus:bg-yellow-400"
               onMouseOver={() => setHoveredVisitedState(visitedState)}
               onFocus={() => setHoveredVisitedState(visitedState)}
               onMouseLeave={() => setHoveredVisitedState(null)}
               onBlur={() => setHoveredVisitedState(null)}
             >
-              {visitedState.name}
-            </li>
+              <picture className="inline-flex shrink-0 justify-center w-8 me-2">
+                <source
+                  type="image/webp"
+                  srcSet={`https://flagcdn.com/h20/us-${visitedState.abbr.toLowerCase()}.webp,
+                  https://flagcdn.com/h40/us-${visitedState.abbr.toLowerCase()}.webp 2x`}
+                />
+                <source
+                  type="image/png"
+                  srcSet={`https://flagcdn.com/h20/us-${visitedState.abbr.toLowerCase()}.png,
+                  https://flagcdn.com/h40/us-${visitedState.abbr.toLowerCase()}.png 2x`}
+                />
+                <img
+                  src={`https://flagcdn.com/h40/us-${visitedState.abbr.toLowerCase()}.png`}
+                  height="20"
+                  alt={`Flag of ${visitedState.name}`}
+                />
+              </picture>
+              <span className="underline underline-offset-2 decoration-1 decoration-dotted">{visitedState.name}</span>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     );
 
@@ -127,27 +143,39 @@ function FlagPageContent() {
     : (
       <div>
         <h3 className="mb-1">States left to see</h3>
-        <ul className="inline-flex flex-wrap gap-1">
-          {sortedUnvisitedStatesByName.map((unvisitedState, index) => (
-            <li
+        <div className="grid gap-1 grid-cols-[repeat(auto-fill,minmax(144px,1fr))]">
+          {sortedUnvisitedStatesByName.map((unvisitedState) => (
+            <div
               key={unvisitedState.abbr}
               role="button"
               tabIndex={0}
-              className={clsx(
-                "inline-flex cursor-default transition-colors outline-hidden hover:bg-slate-50 focus:bg-slate-50",
-                {
-                  "after:content-[',']": index !== sortedUnvisitedStatesByName.length - 1
-                }
-              )}
+              className="inline-flex items-center p-1 cursor-default transition-colors outline-hidden hover:bg-slate-50 focus:bg-slate-50"
               onMouseOver={() => setHoveredUnvisitedState(unvisitedState)}
               onFocus={() => setHoveredUnvisitedState(unvisitedState)}
               onMouseLeave={() => setHoveredUnvisitedState(null)}
               onBlur={() => setHoveredUnvisitedState(null)}
             >
-              {unvisitedState.name}
-            </li>
+              <picture className="inline-flex shrink-0 justify-center w-8 me-2">
+                <source
+                  type="image/webp"
+                  srcSet={`https://flagcdn.com/h20/us-${unvisitedState.abbr.toLowerCase()}.webp,
+                  https://flagcdn.com/h40/us-${unvisitedState.abbr.toLowerCase()}.webp 2x`}
+                />
+                <source
+                  type="image/png"
+                  srcSet={`https://flagcdn.com/h20/us-${unvisitedState.abbr.toLowerCase()}.png,
+                  https://flagcdn.com/h40/us-${unvisitedState.abbr.toLowerCase()}.png 2x`}
+                />
+                <img
+                  src={`https://flagcdn.com/h40/us-${unvisitedState.abbr.toLowerCase()}.png`}
+                  height="20"
+                  alt={`Flag of ${unvisitedState.name}`}
+                />
+              </picture>
+              <span className="underline underline-offset-2 decoration-1 decoration-dotted">{unvisitedState.name}</span>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     );
 
@@ -227,9 +255,12 @@ function FlagPageContent() {
 
   return (
     <div className="grid gap-4 md:gap-6 lg:gap-8 items-start grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr]">
-      <USFlag visitedStates={visitedStates} />
+      <USFlag
+        className={`${visitedStates.length === 0 ? "opacity-60" : ""}`}
+        visitedStates={visitedStates}
+      />
       <div className="flex shrink-0 flex-col gap-6">
-        <div>
+        <div className={numVisistedStatesContainerClasses}>
           {numVisitedStatesMarkup}
           {hoverStatesMarkup}
         </div>

@@ -7,16 +7,18 @@ import { stars } from "../data";
 import { useTheManyStatesStore } from "@/app/store";
 
 interface USFlagProps {
+  className?: string;
   visitedStates: IState[];
 }
 
-export default function USFlag({ visitedStates = [] }: USFlagProps) {
+export default function USFlag({ className, visitedStates = [] }: USFlagProps) {
   const hoveredVisitedState = useTheManyStatesStore((state) => state.hoveredVisitedState);
   const hoveredUnvisitedState = useTheManyStatesStore((state) => state.hoveredUnvisitedState);
   const selectedStateAbbrs = visitedStates.map((state: IState) => state.abbr);
+  const usFlagClasses = clsx("flag-container w-full md:sticky md:top-6 lg:top-12", className);
 
   return (
-    <div className="flag-container w-full">
+    <div className={usFlagClasses}>
       <svg
         width=""
         height=""
