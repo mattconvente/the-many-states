@@ -263,10 +263,7 @@ function FlagPageContent() {
 
   return (
     <div className="grid gap-4 md:gap-6 lg:gap-8 items-start grid-cols-1 lg:grid-cols-[2fr_1fr]">
-      <USFlag
-        className={`${visitedStates.length === 0 ? "opacity-60" : ""}`}
-        visitedStates={visitedStates}
-      />
+      <USFlag visitedStates={visitedStates} />
       <div className="flex shrink-0 flex-col gap-6">
         <div className={numVisistedStatesContainerClasses}>
           {numVisitedStatesMarkup}
