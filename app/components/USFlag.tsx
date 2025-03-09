@@ -15,7 +15,7 @@ export default function USFlag({ className, visitedStates = [] }: USFlagProps) {
   const hoveredVisitedState = useTheManyStatesStore((state) => state.hoveredVisitedState);
   const hoveredUnvisitedState = useTheManyStatesStore((state) => state.hoveredUnvisitedState);
   const selectedStateAbbrs = visitedStates.map((state: IState) => state.abbr);
-  const usFlagClasses = clsx("flag-container w-full md:mx-auto md:max-w-3xl lg:sticky lg:max-w-full lg:top-12",
+  const usFlagClasses = clsx("flag-container",
     {
       "opacity-60": visitedStates.length === 0,
     }, className);
