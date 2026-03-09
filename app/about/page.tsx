@@ -1,11 +1,65 @@
 "use client"
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from 'next/image';
 import USFlagCanton from "@/app/components/USFlagCanton";
 
 export default function AboutPage() {
   const textLinkClasses = "underline underline-offset-2 outline-hidden outline-black hover:no-underline focus:no-underline focus-visible:outline-2 focus-visible:rounded-xs";
+  const imageGridRef = useRef<HTMLDivElement | null>(null);
+  const posterImageRef = useRef<HTMLDivElement | null>(null);
+  const [hasImageGridEnteredViewport, setHasImageGridEnteredViewport] = useState(false);
+  const [hasPosterImageEnteredViewport, setHasPosterImageEnteredViewport] = useState(false);
+
+  useEffect(() => {
+    if (hasImageGridEnteredViewport || !imageGridRef.current) {
+      return;
+    }
+
+    const imageGridObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setHasImageGridEnteredViewport(true);
+          imageGridObserver.disconnect();
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    imageGridObserver.observe(imageGridRef.current);
+
+    return () => {
+      imageGridObserver.disconnect();
+    };
+  }, [hasImageGridEnteredViewport]);
+
+  useEffect(() => {
+    if (hasPosterImageEnteredViewport || !posterImageRef.current) {
+      return;
+    }
+
+    const posterImageObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setHasPosterImageEnteredViewport(true);
+          posterImageObserver.disconnect();
+        }
+      },
+      {
+        threshold: 0.33,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    posterImageObserver.observe(posterImageRef.current);
+
+    return () => {
+      posterImageObserver.disconnect();
+    };
+  }, [hasPosterImageEnteredViewport]);
 
   return (
     <div className="grid grid-cols-1 gap-6 md:gap-8 justify-items-center">
@@ -22,7 +76,10 @@ export default function AboutPage() {
         <p className="text-base md:text-xl lg:text-2xl leading-normal">During my senior year at design school, one of my class projects was to design a personal narrative poster. Inspired by cross-country road trips with my long-haul trucker Dad and twin brother Mike, I wanted to represent the states I had visited in each year of my life.</p>
       </div>
       <div className="col-span-full w-full">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 lg:grid-rows-4 gap-2 sm:gap-4 xl:gap-6">
+        <div
+          ref={imageGridRef}
+          className={`grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 lg:grid-rows-4 gap-2 sm:gap-4 xl:gap-6 about-photo-grid${!hasImageGridEnteredViewport ? " about-photo-grid--pre-reveal" : ""}`}
+        >
           <Image
             width={915}
             height={650}
@@ -154,7 +211,10 @@ export default function AboutPage() {
       <div className="max-w-prose mx-auto">
         <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">With help from my parents, I was able to recollect the states I had visited during the earliest years of my life.</p>
         <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">Rather than highlight visited states on a geographic map like existing apps, as a creative twist, I chose to represent visited states as illuminated stars in the flag&apos;s blue canton.</p>
-        <div className="my-4 lg:my-6 md:max-w-md lg:max-w-lg mx-auto">
+        <div
+          ref={posterImageRef}
+          className={`my-4 lg:my-6 md:max-w-md lg:max-w-lg mx-auto about-poster-image${!hasPosterImageEnteredViewport ? " about-poster-image--pre-reveal" : ""}`}
+        >
           <Image
             src="/the-many-states-of-matt-convente.jpg"
             alt="The Many States of Matt Convente personal narrative poster."
