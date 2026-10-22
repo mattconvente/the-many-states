@@ -5,7 +5,9 @@ Each visible star in the flag's blue canton represents a visited state, and the 
 
 ## Development
 
-Use npm and commit `package-lock.json` when changing dependencies.
+Use Node.js 24 LTS (also specified in `.nvmrc`) and npm. Configure the deployment environment to use Node.js 24 as well.
+
+Commit `package-lock.json` when changing dependencies.
 
 ```sh
 npm ci
