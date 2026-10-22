@@ -68,7 +68,7 @@ export default function AboutPage() {
         <p className="mb-3 lg:mb-4 text-base md:text-xl lg:text-2xl leading-normal">The Many States is a web application where people can create a personalized United States flag based on the states they&apos;ve visited.</p>
         <p className="text-base md:text-xl lg:text-2xl leading-normal">Each visible star in the flag&apos;s blue canton represents a visited state, and the stars are ordered based on each state&apos;s admission to the Union.</p>
       </div>
-      <div className="max-w-full sm:max-w-xl md:max-w-[665px]">
+      <div className="w-full max-w-full sm:max-w-xl md:max-w-[665px]">
         <USFlagCanton />
       </div>
       <div className="max-w-prose mx-auto">
